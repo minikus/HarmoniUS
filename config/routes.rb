@@ -41,6 +41,6 @@ Rails.application.routes.draw do
 
   root :to => 'pages#welcome'
   get '/triads' => 'pages#triads'
-
+  get '/music_maker' => 'pages#music_maker'
   resources :projects, :users
 end

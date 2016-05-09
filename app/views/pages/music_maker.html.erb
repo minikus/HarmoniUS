@@ -1,0 +1,126 @@
+<div class="tunerTitle col-lg-12">
+  <h1>Select Keys to hear outputs</h1>
+</div>
+<div class="row">
+  <div class="col-lg-4">
+    <div class="bs-component">
+      <div class="panel panel-default">
+        <h4 class="topPanel panel-heading"><span>Select Single Notes</span></h4>
+        <div class="panel-body">
+          <button id="playKey" class ="btn btn-success">Play</button>
+          <button id="stopKey" class ="btn btn-danger">Stop</button>
+
+          <select name="mySelect" id="selectedKey">
+            <option value="233.082">A#</option>
+            <option value="246.942">B</option>
+            <option value="261.626">C</option>
+            <option value="277.183">C#</option>
+            <option value="293.665">D</option>
+            <option value="311.127">D#</option>
+            <option value="329.628">E</option>
+            <option value="349.228">F</option>
+            <option value="369.994">F#</option>
+            <option value="391.995">G</option>
+            <option value="415.305">G#</option>
+            <option value="440.000">A</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="panel panel-default">
+        <h4 class="topPanel panel-heading"><span>Input Root Note to play Triads</span></h4>
+        <div class="panel-body">
+          <span>
+            <h4 class="sameLine">Key</h4>
+            <input id="inputKey" type="text" name="Please enter key" placeholder=" C, C#, A..." value="">
+          </span>
+          <span>
+            <h4 class="sameLine sameLineOctave">Octave</h4>
+            <!-- <input id="octave" type="text" name="Please enter key" placeholder="1...7" value=""> -->
+            <select id="selectedOctave">
+              <option value=1>1</option>
+              <option value=2>2</option>
+              <option value=3>3</option>
+              <option value=4>4</option>
+              <option value=5>5</option>
+              <option value=6>6</option>
+              <option value=7>7</option>
+              <option value=8>8</option>
+            </select>
+          </span>
+
+            <span class="inline">
+              <h4>Scale Type</h4>
+              <!-- <input id="octave" type="text" name="Please enter key" placeholder="1...7" value=""> -->
+              <select id="scaleType">
+                <option value="major">major</option>
+                <option>minor</option>
+                <option>blues</option>
+                <option>ionian</option>
+                <option>dorian</option>
+                <option>phrygian</option>
+                <option>lydian</option>
+                <option>mixolydian</option>
+                <option>locrian</option>
+                <option>majorpentatonic</option>
+                <option>minorpentatonic</option>
+                <option>chromatic</option>
+                <option>aeolian</option>
+                <option>harmonicminor</option>
+                <option>melodicminor</option>
+              </select>
+            </span>
+          <!-- <input id="inputKeyButton" type="Play" name="submit" value="submit"> -->
+          <h4>Scale: <span id="scaleOutput"></span></h4>
+          <button id="playTriad" class ="btn btn-success" value="submit">Play Triad</button>
+          <button id="playScale" class ="btn btn-success" value="submit">Play Scale</button>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-4">
+    <div class="bs-component">
+      <div class="panel panel-warning">
+        <div class="panel-heading">
+          <h3 class="panel-title">Sine Tones</h3>
+        </div>
+        <div class="panel-body">
+        </div>
+      </div>
+
+      <div class="panel panel-warning">
+        <div class="panel-heading">
+          <h3 class="panel-title">Make some beats</h3>
+        </div>
+        <div class="panel-body">
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="col-lg-4">
+    <div class="bs-component">
+      <div class="panel panel-warning">
+        <div class="panel-heading">
+          <h3 class="panel-title">Sine Tones</h3>
+        </div>
+        <div class="panel-body">
+        </div>
+      </div>
+
+      <div class="panel panel-warning">
+        <div class="panel-heading">
+          <h3 class="panel-title">Make some beats</h3>
+        </div>
+        <div class="panel-body">
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>
