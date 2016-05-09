@@ -9,6 +9,7 @@
         <div class="panel-body">
           <button id="playKey" class ="btn btn-success">Play</button>
           <button id="stopKey" class ="btn btn-danger">Stop</button>
+
           <select name="mySelect" id="selectedKey">
             <option value="233.082">A#</option>
             <option value="246.942">B</option>
@@ -27,9 +28,28 @@
       </div>
 
       <div class="panel panel-default">
-        <h4 class="topPanel panel-heading"><span>Select Triads</span></h4>
+        <h4 class="topPanel panel-heading"><span>Input Root Note to play Triads</span></h4>
         <div class="panel-body">
-
+          <span>
+            <p class="sameLine">Key</p>
+            <input id="inputKey" type="text" name="Please enter key" placeholder=" C, C#, A..." value="">
+          </span>
+          <span>
+            <p class="sameLine">Octave</p>
+            <!-- <input id="octave" type="text" name="Please enter key" placeholder="1...7" value=""> -->
+            <select id="selectedOctave">
+              <option value=1>1</option>
+              <option value=2>2</option>
+              <option value=3>3</option>
+              <option value=4>4</option>
+              <option value=5>5</option>
+              <option value=6>6</option>
+              <option value=7>7</option>
+              <option value=8>8</option>
+            </select>
+          </span>
+          <!-- <input id="inputKeyButton" type="Play" name="submit" value="submit"> -->
+          <button id="inputKeyButton" class ="btn btn-success" value="submit">Play</button>
         </div>
       </div>
     </div>

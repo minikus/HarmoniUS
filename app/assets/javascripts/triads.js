@@ -1,5 +1,9 @@
 
 $(document).ready(function(){
+  var inputKey;
+  var octave;
+  var key;
+
 	$("#selectedKey").on('change',function(){
 		//alert( $(this).val());
 		osc.frequency.value = parseFloat( $(this).val() );
@@ -43,6 +47,22 @@ $(document).ready(function(){
 	$('#playTriad').click(function(){
 		playTriad();
 	})
+
+
+
+
+
+  $("#inputKeyButton").on('click', function(){
+    inputKey = ($('#inputKey').val()).toLowerCase();
+    octave = $('#selectedOctave').val()
+    key = inputKey + octave;
+    console.log(key);
+    console.log(teoria.chord(key));
+
+
+
+  });
+
 
 
 });
