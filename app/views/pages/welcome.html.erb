@@ -1,0 +1,74 @@
+<div class="jumbotron">
+  <div class="row">
+    <div class="col-lg-6">
+      <h1>HarmoniUS</h1>
+      <p>Find harmonious notes to compliment  other amateur musicians. Start Jamming, one note at a time.</p>
+    </div>
+    <div class="col-lg-6">
+      <canvas id="waveform"></canvas>
+    </div>
+  </div>
+</div>
+<div class="row">
+   <div class="col-lg-4">
+     <div class="bs-component">
+       <div class="panel panel-default">
+         <h4 class="topPanel panel-heading">Select Input Type</h4>
+         <div class="panel-body">
+           <button class="btn btn-success" onclick="this.innerText = togglePlayback()">demo audio</button>
+           <button class="btn btn-danger" onclick="toggleLiveInput()">live input</button>
+           <button class="btn btn-warning" onclick="toggleOscillator()">oscillator</button>
+           <!-- <button onclick="updatePitch(0);">sample</button> -->
+         </div>
+       </div>
+
+       <div class="panel panel-default">
+         <div class="panel-body">
+           <div class="pitch"><span id="pitch"></span>Hz</div>
+         </div>
+         <div class="panel-footer">
+           <div id="detector" class="vague">
+             <div class="note"><span id="note">--</span></div>
+             <canvas id="output" width=300 height=42></canvas>
+             <div id="detune"><span id="detune_amt">--</span><span id="flat">cents &#9837;</span><span id="sharp">cents &#9839;</span></div>
+           </div>
+         </div>
+       </div>
+
+       <div class="panel panel-default">
+         <div class="panel-body">
+           waveform
+         </div>
+         <div class="panel-footer">
+           <canvas id="waveform"></canvas>
+         </div>
+       </div>
+
+     </div>
+   </div>
+
+   <div class="col-lg-8">
+     <div class="bs-component">
+       <div class="panel panel-primary">
+         <div class="panel-heading">
+           <h3 class="panel-title">User 1 played notes:</h3>
+         </div>
+         <div class="panel-body">
+           <div id="saved-output">
+             <div class="note"><span>Played Notes: </div>
+           </div>
+         </div>
+       </div>
+
+       <div class="panel panel-success">
+         <div class="panel-heading">
+           <h3 class="panel-title">User 2 notes to match:</h3>
+         </div>
+         <div class="panel-body">
+           <div id="harmonizing-match">
+             <div class="note"><span>Played Notes: </div>
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>
