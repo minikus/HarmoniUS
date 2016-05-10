@@ -301,7 +301,7 @@ function updatePitch( time ) {
 
 	if (DEBUGCANVAS) {  // This draws the current waveform, useful for debugging
 		waveCanvas.clearRect(0,0,512,256);
-		waveCanvas.strokeStyle = "red";
+		waveCanvas.strokeStyle = "blue";
 		waveCanvas.beginPath();
 		waveCanvas.moveTo(0,0);
 		waveCanvas.lineTo(0,256);

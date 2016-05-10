@@ -7,7 +7,7 @@
       <div class="panel panel-default">
         <h4 class="topPanel panel-heading"><span>Select Single Notes</span></h4>
         <div class="panel-body">
-          <button id="playKey" class ="btn btn-success">Play</button>
+          <button id="playKey" class ="btn btn-blue">Play</button>
           <button id="stopKey" class ="btn btn-danger">Stop</button>
 
           <select name="mySelect" id="selectedKey">
@@ -24,11 +24,13 @@
             <option value="415.305">G#</option>
             <option value="440.000">A</option>
           </select>
+
+
         </div>
       </div>
 
       <div class="panel panel-default">
-        <h4 class="topPanel panel-heading"><span>Input Root Note to play Triads</span></h4>
+        <h4 class="topPanel panel-heading"><span>Input any Note</span></h4>
         <div class="panel-body">
           <span>
             <h4 class="sameLine">Key</h4>
@@ -38,8 +40,6 @@
             <h4 class="sameLine sameLineOctave">Octave</h4>
             <!-- <input id="octave" type="text" name="Please enter key" placeholder="1...7" value=""> -->
             <select id="selectedOctave">
-              <option value=1>1</option>
-              <option value=2>2</option>
               <option value=3>3</option>
               <option value=4>4</option>
               <option value=5>5</option>
@@ -55,29 +55,74 @@
               <select id="scaleType">
                 <option value="major">major</option>
                 <option>minor</option>
-                <option>blues</option>
+                <option>harmonicminor</option>
+                <option>melodicminor</option>
                 <option>ionian</option>
                 <option>dorian</option>
                 <option>phrygian</option>
                 <option>lydian</option>
                 <option>mixolydian</option>
                 <option>locrian</option>
-                <option>majorpentatonic</option>
-                <option>minorpentatonic</option>
                 <option>chromatic</option>
                 <option>aeolian</option>
-                <option>harmonicminor</option>
-                <option>melodicminor</option>
               </select>
             </span>
           <!-- <input id="inputKeyButton" type="Play" name="submit" value="submit"> -->
           <h4>Scale: <span id="scaleOutput"></span></h4>
-          <button id="playTriad" class ="btn btn-success" value="submit">Play Triad</button>
-          <button id="playScale" class ="btn btn-success" value="submit">Play Scale</button>
-
-
+          <button id="playTriad" class ="btn btn-blue" value="submit">Play Triad</button>
+          <button id="playScale" class ="btn btn-blue" value="submit">Play Scale</button>
         </div>
       </div>
+
+
+
+            <div class="panel panel-default">
+              <h4 class="topPanel panel-heading"><span>Find a Complementary Harmony</span></h4>
+              <div class="panel-body">
+                <span>
+                  <h4 class="sameLine">Root Note: </h4>
+                  <span class="rootNote"></span>
+                </span>
+                <span>
+                  <h4 class="sameLine sameLineOctave">Octave</h4>
+                  <!-- <input id="octave" type="text" name="Please enter key" placeholder="1...7" value=""> -->
+                  <select id="selectedOctave">
+                    <option value=1>1</option>
+                    <option value=2>2</option>
+                    <option value=3>3</option>
+                    <option value=4>4</option>
+                    <option value=5>5</option>
+                    <option value=6>6</option>
+                    <option value=7>7</option>
+                    <option value=8>8</option>
+                  </select>
+                </span>
+
+                  <span class="inline">
+                    <h4>Triad Type</h4>
+                    <!-- <input id="octave" type="text" name="Please enter key" placeholder="1...7" value=""> -->
+                    <select id="scaleType">
+                      <option value="major">major</option>
+                      <option>minor</option>
+                      <option>harmonicminor</option>
+                      <option>melodicminor</option>
+                      <option>ionian</option>
+                      <option>dorian</option>
+                      <option>phrygian</option>
+                      <option>lydian</option>
+                      <option>mixolydian</option>
+                      <option>locrian</option>
+                      <option>chromatic</option>
+                      <option>aeolian</option>
+                    </select>
+                  </span>
+                <p></p>
+                <button id="playCompTriad" class ="btn btn-blue" value="submit">Play Complementarty Triad</button>
+              </div>
+            </div>
+
+
+
     </div>
   </div>
 
@@ -90,45 +135,46 @@
         <div class="panel-body">
           <div id="saved-output">
             <div class="piano">
-              <div class="whiteKeys"><p>C</p>
-                <div class="blackKeys"><p>C#</p></div>
+              <div id="c3" class="whiteKeys"><p>C</p>
+                <div id="c#3" class="blackKeys"><p>C#</p></div>
               </div>
-              <div class="whiteKeys"><p>D</p>
-                <div class="blackKeys"><p>D#</p></div>
+              <div id="d3" class="whiteKeys"><p>D</p>
+                <div id="d#3" class="blackKeys"><p>D#</p></div>
               </div>
-              <div class="whiteKeys"><p>E</p>
+              <div id="e3" class="whiteKeys"><p>E</p>
               </div>
-              <div class="whiteKeys"><p>F</p>
-                <div class="blackKeys"><p>F#</p></div>
+              <div id="e#3">
+                <div id="f3" class="whiteKeys"><p>F</p>
+                  <div id="f#3" class="blackKeys"><p>F#</p></div>
+                </div>
               </div>
-              <div class="whiteKeys"><p>G</p>
-                <div class="blackKeys"><p>G#</p></div>
+              <div id="g3" class="whiteKeys"><p>G</p>
+                <div id="g#3" class="blackKeys"><p>G#</p></div>
               </div>
-              <div class="whiteKeys"><p>A</p>
-                <div class="blackKeys"><p>A#</p></div>
+              <div id="a3" class="whiteKeys"><p>A</p>
+                <div id="a#3" class="blackKeys"><p>A#</p></div>
               </div>
-              <div class="whiteKeys"><p>B</p>
+              <div id="b3" class="whiteKeys"><p>B</p>
               </div>
-              <div class="whiteKeys"><p>C</p>
-                <div class="blackKeys"><p>C#</p></div>
+              <div id="c4" class="whiteKeys"><p>C</p>
+                <div id="c#4" class="blackKeys"><p>C#</p></div>
               </div>
-              <div class="whiteKeys"><p>D</p>
-                <div class="blackKeys"><p>D#</p></div>
+              <div id="d4" class="whiteKeys"><p>D</p>
+                <div id="d#4" class="blackKeys"><p>D#</p></div>
               </div>
-              <div class="whiteKeys"><p>E</p>
+              <div id="e4" class="whiteKeys"><p>E</p>
               </div>
-              <div class="whiteKeys"><p>F</p>
-                <div class="blackKeys"><p>F#</p></div>
+              <div id="f4" class="whiteKeys"><p>F</p>
+                <div id="f#4" class="blackKeys"><p>F#</p></div>
               </div>
-              <div class="whiteKeys"><p>G</p>
-                <div class="blackKeys"><p>G#</p></div>
+              <div id="g4" class="whiteKeys"><p>G</p>
+                <div id="g#4" class="blackKeys"><p>G#</p></div>
               </div>
-              <div class="whiteKeys"><p>A</p>
-                <div class="blackKeys"><p>A#</p></div>
+              <div id="a5" class="whiteKeys"><p>A</p>
+                <div id="a#5" class="blackKeys"><p>A#</p></div>
               </div>
-              <div class="whiteKeys"><p>B</p>
+              <div id="b5" class="whiteKeys"><p>B</p>
               </div>
-
             </div>
           </div>
         </div>
@@ -136,12 +182,51 @@
 
       <div class="panel panel-warning">
         <div class="panel-heading">
-          <h3 class="panel-title">Some sort of graphic display</h3>
+          <h3 class="panel-title">User Two</h3>
         </div>
         <div class="panel-body">
           <div id="saved-output">
             <div class="graphicOutput">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+              <div class="piano">
+                <div id="user2-2c3" class="whiteKeys"><p>C</p>
+                  <div id="user2-2c#3" class="blackKeys"><p>C#</p></div>
+                </div>
+                <div id="user2-d3" class="whiteKeys"><p>D</p>
+                  <div id="d#3" class="blackKeys"><p>D#</p></div>
+                </div>
+                <div id="user2-e3" class="whiteKeys"><p>E</p>
+                </div>
+                <div id="user2-f3" class="whiteKeys"><p>F</p>
+                  <div id="user2-f#3" class="blackKeys"><p>F#</p></div>
+                </div>
+                <div id="user2-g3" class="whiteKeys"><p>G</p>
+                  <div id="user2-g#3" class="blackKeys"><p>G#</p></div>
+                </div>
+                <div id="user2-a4" class="whiteKeys"><p>A</p>
+                  <div id="user2-a#4" class="blackKeys"><p>A#</p></div>
+                </div>
+                <div id="user2-b4" class="whiteKeys"><p>B</p>
+                </div>
+                <div id="user2-c4" class="whiteKeys"><p>C</p>
+                  <div id="user2-c#4" class="blackKeys"><p>C#</p></div>
+                </div>
+                <div id="user2-d4" class="whiteKeys"><p>D</p>
+                  <div id="user2-d#4" class="blackKeys"><p>D#</p></div>
+                </div>
+                <div id="user2-e4" class="whiteKeys"><p>E</p>
+                </div>
+                <div id="user2-f4" class="whiteKeys"><p>F</p>
+                  <div id="user2-f#4" class="blackKeys"><p>F#</p></div>
+                </div>
+                <div id="user2-g4" class="whiteKeys"><p>G</p>
+                  <div id="user2-g#4" class="blackKeys"><p>G#</p></div>
+                </div>
+                <div id="user2-a5" class="whiteKeys"><p>A</p>
+                  <div id="user2-a#5" class="blackKeys"><p>A#</p></div>
+                </div>
+                <div id="user2-b5" class="whiteKeys"><p>B</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -149,62 +234,5 @@
 
 
     </div>
-  </div>
-
-  <div class="row">
-    <!-- <div class="col-lg-12">
-      <div>
-        <div class="panel panel-default">
-        <div class="black-buttons"><input type="radio" name="piano" class="black" id="button-black-1-1" />
-          <label for="button-black-1-1"></label>
-          <input type="radio" name="piano" class="black" id="button-black-1-2" />
-          <label for="button-black-1-2"></label>
-          <input type="radio" name="piano" class="black" id="button-black-1-3" />
-          <label for="button-black-1-3"></label>
-          <input type="radio" name="piano" class="black" id="button-black-1-4" />
-          <label for="button-black-1-4"></label>
-          <input type="radio" name="piano" class="black" id="button-black-1-5" />
-          <label for="button-black-1-5"></label></div>
-        <div class="black-buttons">
-          <input type="radio" name="piano" class="black" id="button-black-2-1" /><label for="button-black-2-1"></label>
-          <input type="radio" name="piano" class="black" id="button-black-2-2" />
-          <label for="button-black-2-2"></label><input type="radio" name="piano" class="black" id="button-black-2-3" />
-          <label for="button-black-2-3"></label><input type="radio" name="piano" class="black" id="button-black-2-4" />
-          <label for="button-black-2-4"></label><input type="radio" name="piano" class="black" id="button-black-2-5" />
-          <label for="button-black-2-5"></label></div>
-        <div class="black-buttons"><input type="radio" name="piano" class="black" id="button-black-3-1" />
-          <label for="button-black-3-1"></label><input type="radio" name="piano" class="black" id="button-black-3-2" />
-          <label for="button-black-3-2"></label><input type="radio" name="piano" class="black" id="button-black-3-3" />
-          <label for="button-black-3-3"></label><input type="radio" name="piano" class="black" id="button-black-3-4" />
-          <label for="button-black-3-4"></label><input type="radio" name="piano" class="black" id="button-black-3-5" />
-          <label for="button-black-3-5"></label>
-        </div>
-        <div class="white-buttons">
-          <input type="radio" name="piano" id="button-1" />
-          <label for="button-1"></label><input type="radio" name="piano" id="button-2" />
-          <label for="button-2"></label><input type="radio" name="piano" id="button-3" />
-          <label for="button-3"></label><input type="radio" name="piano" id="button-4" />
-          <label for="button-4"></label><input type="radio" name="piano" id="button-5" />
-          <label for="button-5"></label><input type="radio" name="piano" id="button-6" />
-          <label for="button-6"></label><input type="radio" name="piano" id="button-7" />
-          <label for="button-7"></label><input type="radio" name="piano" id="button-8" />
-          <label for="button-8"></label><input type="radio" name="piano" id="button-9" />
-          <label for="button-9"></label><input type="radio" name="piano" id="button-10" />
-          <label for="button-10"></label><input type="radio" name="piano" id="button-11" />
-          <label for="button-11"></label><input type="radio" name="piano" id="button-12" />
-          <label for="button-12"></label><input type="radio" name="piano" id="button-13" />
-          <label for="button-13"></label><input type="radio" name="piano" id="button-14" />
-          <label for="button-14"></label><input type="radio" name="piano" id="button-15" />
-          <label for="button-15"></label><input type="radio" name="piano" id="button-16" />
-          <label for="button-16"></label><input type="radio" name="piano" id="button-17" />
-          <label for="button-17"></label><input type="radio" name="piano" id="button-18" />
-          <label for="button-18"></label><input type="radio" name="piano" id="button-19" />
-          <label for="button-19"></label><input type="radio" name="piano" id="button-20" />
-          <label for="button-20"></label><input type="radio" name="piano" id="button-21" />
-          <label for="button-21"></label>
-        </div>
-      </div>
-    </div>
-    </div> -->
   </div>
 </div>

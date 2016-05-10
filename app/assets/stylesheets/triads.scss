@@ -55,6 +55,12 @@ h5.keyInputs{
   margin-top: 15px;
 }
 
+#playCompTriad{
+  margin-top: 15px;
+  // margin-left: -105px;
+
+}
+
 .inline h4{
   float: left;
   margin-top: 18px;
@@ -65,6 +71,18 @@ h5.keyInputs{
   margin-left: 20px;
 }
 
-.whiteKeys{
+.btn-blue {
+    color: #fff;
+    background-color: #4288A7;
+    border-color: #9AB2BD;
+}
 
+.btn.btn-blue:hover {
+  background-color: #2A596D;
+  color: white;
+}
+
+.rootNote {
+  font-weight: bold;
+  font-size: 1.5em;
 }
