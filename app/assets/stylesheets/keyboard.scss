@@ -1,10 +1,31 @@
 
 .whiteKeys {
-  width: 60px;
-  height: 220px;
-  border: 1px solid black;
+  width: 50px;
+  height: 230px;
+  border: 0.5px solid grey;
   float: left;
   position: relative;
+  border-radius: 0 0 3px 3px;
+}
+
+.whiteKeys:hover {
+  background-color: rgb(171, 200, 213);
+  box-shadow: 0px 5px 1px rgba(32,32,32,0.2);
+		-webkit-transition: margin 0.05s ease, background-color 0.05s ease, box-shadow 0.05s ease;
+}
+
+.whiteKeys {
+  cursor:pointer;
+  box-shadow: 0px 5px 1px rgba(32,32,32,0.2);
+  -webkit-transition: margin 0.05s ease, background-color 0.05s ease, box-shadow 0.05s ease;
+}
+
+.whiteKeys:active {
+  display: block;
+  height: 235px;
+  box-shadow: none;
+  box-shadow: inset 0 0 1.5em rgba(124, 124, 124, 0.8);
+  -webkit-transition: margin 0.05s ease, background-color 0.05s ease, box-shadow 0.05s ease;
 }
 
 .blackKeys{
@@ -13,15 +34,21 @@
   background-color: black;
   position: absolute;
   top: 0;
-  left: 37px;
+  left: 32px;
   z-index: 1;
+  border-radius: 0 0 6px 6px;
 }
 
-.whiteKeys p :first-child {
+.blackKeys:hover {
+  background-color: rgb(5, 7, 43);
+}
+
+.whiteKeys>p {
   color: black;
   text-align: center;
-  margin-top: 160px;
+  margin-top: 180px;
   bottom: 10px;
+  font-weight: bold;
 }
 
 .blackKeys p {
