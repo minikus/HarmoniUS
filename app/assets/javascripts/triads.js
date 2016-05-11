@@ -20,10 +20,28 @@ $(document).ready(function(){
 
   var audioContext = new AudioContext()
 
+///// Click Keyboard to Hear Sounds
+$(".pianoKey").on('mousedown', function(event){
+  event.stopPropagation();
+  var osc = audioContext.createOscillator();
+  // var playedKey = ($('.pianoKey').val()).toLowerCase();
+  var playedKey = $(this).find('p').first().text().toLowerCase();
+  console.log(playedKey);
+
+
+  osc.frequency.value = (teoria.note(playedKey)).fq();
+  osc.type = 'triangle';
+
+
+  osc.connect(audioContext.destination)
+  osc.start(audioContext.currentTime)
+  osc.stop(audioContext.currentTime + 0.5)
+});
+
+
 ///// Play Single Notes
 
 	$("#selectedKey").on('change',function(){
-
 		osc.frequency.value = parseFloat( $(this).val() );
 		// osc.detune.value = 500;
 	})
@@ -278,7 +296,4 @@ var id = function (key) {
   }).on('mouseup', function () {
     $(this).closest('.whiteKeys').removeClass('unpressed');
   });
-
-
-
 });

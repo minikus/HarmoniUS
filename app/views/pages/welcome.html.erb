@@ -18,10 +18,6 @@
            <button id="playSample" class="btn btn-success">Sample</button>
            <button id="playLiveInput" class="btn btn-danger">Live input</button>
            <button id="playOscillator" class="btn btn-warning">Oscillator</button>
-           <!-- <button id="startStop" class="btn btn-success" onclick="this.innerText = togglePlayback()">Sample</button>
-           <button id="startStop" class="btn btn-danger" onclick="this.innerText = toggleLiveInput()">Live input</button>
-           <button id="startStop" class="btn btn-warning" onclick="this.innerText = toggleOscillator()">Oscillator</button> -->
-             <!-- <button class="btn btn-danger" onclick="this.innerText = stopOscillator()">Stop</button> -->
 
            <!-- <button onclick="updatePitch(0);">sample</button> -->
          </div>
@@ -48,12 +44,11 @@
            <canvas id="waveform"></canvas>
          </div>
        </div>
-
      </div>
    </div>
 
-   <div class="col-lg-8">
-     <div class="bs-component">
+      <div class="col-lg-4">
+      <!-- <div class="bs-component"> -->
        <div class="panel panel-primary">
          <div class="panel-heading">
            <h3 class="panel-title">User 1 played notes:</h3>
@@ -63,15 +58,18 @@
            </div>
          </div>
        </div>
+      </div>
 
+      <div class="col-lg-4">
        <div class="panel panel-success">
          <div class="panel-heading">
            <h3 class="panel-title">User 2 notes to match:</h3>
          </div>
          <div class="panel-body">
-           <div id="matchinNotes">
-           </div>
+           <div id="matchingNotes"></div>
          </div>
        </div>
      </div>
-   </div>
+     <!-- </div> -->
+
+</div> <!--end row-->

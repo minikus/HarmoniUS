@@ -24,8 +24,6 @@
             <option value="415.305">G#</option>
             <option value="440.000">A</option>
           </select>
-
-
         </div>
       </div>
 
@@ -73,56 +71,46 @@
           <button id="playScale" class ="btn btn-blue" value="submit">Play Scale</button>
         </div>
       </div>
+        <div class="panel panel-default">
+          <h4 class="topPanel panel-heading"><span>Find a Complementary Harmony</span></h4>
+          <div class="panel-body">
+            <span>
+              <h4 class="sameLine">Root Note: </h4>
+              <span class="rootNote"></span>
+            </span>
+            <span>
+              <h4 class="sameLine sameLineOctave">Octave</h4>
+              <!-- <input id="octave" type="text" name="Please enter key" placeholder="1...7" value=""> -->
+              <select id="selectedOctave">
+                <option value=1>1</option>
+                <option value=2>2</option>
+                <option value=3>3</option>
+                <option value=4>4</option>
+                <option value=5>5</option>
+                <option value=6>6</option>
+                <option value=7>7</option>
+                <option value=8>8</option>
+              </select>
+            </span>
 
-            <div class="panel panel-default">
-              <h4 class="topPanel panel-heading"><span>Find a Complementary Harmony</span></h4>
-              <div class="panel-body">
-                <span>
-                  <h4 class="sameLine">Root Note: </h4>
-                  <span class="rootNote"></span>
-                </span>
-                <span>
-                  <h4 class="sameLine sameLineOctave">Octave</h4>
-                  <!-- <input id="octave" type="text" name="Please enter key" placeholder="1...7" value=""> -->
-                  <select id="selectedOctave">
-                    <option value=1>1</option>
-                    <option value=2>2</option>
-                    <option value=3>3</option>
-                    <option value=4>4</option>
-                    <option value=5>5</option>
-                    <option value=6>6</option>
-                    <option value=7>7</option>
-                    <option value=8>8</option>
-                  </select>
-                </span>
-
-                  <span class="inline">
-                    <h4>Triad Type</h4>
-                    <!-- <input id="octave" type="text" name="Please enter key" placeholder="1...7" value=""> -->
-                    <select id="scaleType">
-                      <option value="major">major</option>
-                      <option>minor</option>
-                      <option>harmonicminor</option>
-                      <option>melodicminor</option>
-                      <option>ionian</option>
-                      <option>dorian</option>
-                      <option>phrygian</option>
-                      <option>lydian</option>
-                      <option>mixolydian</option>
-                      <option>locrian</option>
-                      <option>chromatic</option>
-                      <option>aeolian</option>
-                    </select>
-                  </span>
-                <p></p>
-                <button id="playCompTriad" class ="btn btn-blue" value="submit">Play Complementarty Triad</button>
-              </div>
+              <span class="inline">
+                <h4>Chord Type</h4>
+                <!-- <input id="octave" type="text" name="Please enter key" placeholder="1...7" value=""> -->
+                <select id="chordType">
+                  <option value="Major">Major</option>
+                  <option>Major-6th</option>
+                  <option>Minor</option>
+                  <option>Minor-7th</option>
+                  <option>Diminished</option>
+                  <option>Diminished-7th</option>
+                </select>
+              </span>
+              <p></p>
+              <button id="playCompTriad" class ="btn btn-blue" value="submit">Play Complementarty Triad</button>
             </div>
-
-
-
+          </div>
+      </div>
     </div>
-  </div>
 
   <div class="col-lg-8">
     <div class="bs-component">
@@ -133,45 +121,45 @@
         <div class="panel-body">
           <div id="saved-output">
             <div class="piano">
-              <div id="c3" class="whiteKeys"><p>C</p>
-                <div id="c#3" class="blackKeys"><p>C#</p></div>
+              <div id="c3" class="whiteKeys pianoKey"><p>C</p>
+                <div id="c#3" class="blackKeys pianoKey"><p>C#</p></div>
               </div>
-              <div id="d3" class="whiteKeys"><p>D</p>
-                <div id="d#3" class="blackKeys"><p>D#</p></div>
+              <div id="d3" class="whiteKeys pianoKey"><p>D</p>
+                <div id="d#3" class="blackKeys pianoKey"><p>D#</p></div>
               </div>
-              <div id="e3" class="whiteKeys"><p>E</p>
+              <div id="e3" class="whiteKeys pianoKey"><p>E</p>
               </div>
               <div id="e#3">
-                <div id="f3" class="whiteKeys"><p>F</p>
-                  <div id="f#3" class="blackKeys"><p>F#</p></div>
+                <div id="f3" class="whiteKeys pianoKey"><p>F</p>
+                  <div id="f#3" class="blackKeys pianoKey"><p>F#</p></div>
                 </div>
               </div>
-              <div id="g3" class="whiteKeys"><p>G</p>
-                <div id="g#3" class="blackKeys"><p>G#</p></div>
+              <div id="g3" class="whiteKeys pianoKey"><p>G</p>
+                <div id="g#3" class="blackKeys pianoKey"><p>G#</p></div>
               </div>
-              <div id="a3" class="whiteKeys"><p>A</p>
-                <div id="a#3" class="blackKeys"><p>A#</p></div>
+              <div id="a3" class="whiteKeys pianoKey"><p>A</p>
+                <div id="a#3" class="blackKeys pianoKey"><p>A#</p></div>
               </div>
-              <div id="b3" class="whiteKeys"><p>B</p>
+              <div id="b3" class="whiteKeys pianoKey"><p>B</p>
               </div>
-              <div id="c4" class="whiteKeys"><p>C</p>
-                <div id="c#4" class="blackKeys"><p>C#</p></div>
+              <div id="c4" class="whiteKeys pianoKey"><p>C</p>
+                <div id="c#4" class="blackKeys pianoKey"><p>C#</p></div>
               </div>
-              <div id="d4" class="whiteKeys"><p>D</p>
-                <div id="d#4" class="blackKeys"><p>D#</p></div>
+              <div id="d4" class="whiteKeys pianoKey"><p>D</p>
+                <div id="d#4" class="blackKeys pianoKey"><p>D#</p></div>
               </div>
-              <div id="e4" class="whiteKeys"><p>E</p>
+              <div id="e4" class="whiteKeys pianoKey"><p>E</p>
               </div>
-              <div id="f4" class="whiteKeys"><p>F</p>
-                <div id="f#4" class="blackKeys"><p>F#</p></div>
+              <div id="f4" class="whiteKeys pianoKey"><p>F</p>
+                <div id="f#4" class="blackKeys pianoKey"><p>F#</p></div>
               </div>
-              <div id="g4" class="whiteKeys"><p>G</p>
-                <div id="g#4" class="blackKeys"><p>G#</p></div>
+              <div id="g4" class="whiteKeys pianoKey"><p>G</p>
+                <div id="g#4" class="blackKeys pianoKey"><p>G#</p></div>
               </div>
-              <div id="a5" class="whiteKeys"><p>A</p>
-                <div id="a#5" class="blackKeys"><p>A#</p></div>
+              <div id="a5" class="whiteKeys pianoKey"><p>A</p>
+                <div id="a#5" class="blackKeys pianoKey"><p>A#</p></div>
               </div>
-              <div id="b5" class="whiteKeys"><p>B</p>
+              <div id="b5" class="whiteKeys pianoKey"><p>B</p>
               </div>
             </div>
           </div>
@@ -186,50 +174,49 @@
           <div id="saved-output">
             <div class="graphicOutput">
               <div class="piano">
-                <div id="user2-2c3" class="whiteKeys"><p>C</p>
-                  <div id="user2-2c#3" class="blackKeys"><p>C#</p></div>
+                <div id="user2-2c3" class="whiteKeys pianoKey"><p>C</p>
+                  <div id="user2-2c#3" class="blackKeys pianoKey"><p>C#</p></div>
                 </div>
-                <div id="user2-d3" class="whiteKeys"><p>D</p>
-                  <div id="d#3" class="blackKeys"><p>D#</p></div>
+                <div id="user2-d3" class="whiteKeys pianoKey"><p>D</p>
+                  <div id="d#3" class="blackKeys pianoKey"><p>D#</p></div>
                 </div>
-                <div id="user2-e3" class="whiteKeys"><p>E</p>
+                <div id="user2-e3" class="whiteKeys pianoKey"><p>E</p>
                 </div>
-                <div id="user2-f3" class="whiteKeys"><p>F</p>
-                  <div id="user2-f#3" class="blackKeys"><p>F#</p></div>
+                <div id="user2-f3" class="whiteKeys pianoKey"><p>F</p>
+                  <div id="user2-f#3" class="blackKeys pianoKey"><p>F#</p></div>
                 </div>
-                <div id="user2-g3" class="whiteKeys"><p>G</p>
-                  <div id="user2-g#3" class="blackKeys"><p>G#</p></div>
+                <div id="user2-g3" class="whiteKeys pianoKey"><p>G</p>
+                  <div id="user2-g#3" class="blackKeys pianoKey"><p>G#</p></div>
                 </div>
-                <div id="user2-a4" class="whiteKeys"><p>A</p>
-                  <div id="user2-a#4" class="blackKeys"><p>A#</p></div>
+                <div id="user2-a4" class="whiteKeys pianoKey"><p>A</p>
+                  <div id="user2-a#4" class="blackKeys pianoKey"><p>A#</p></div>
                 </div>
-                <div id="user2-b4" class="whiteKeys"><p>B</p>
+                <div id="user2-b4" class="whiteKeys pianoKey"><p>B</p>
                 </div>
-                <div id="user2-c4" class="whiteKeys"><p>C</p>
-                  <div id="user2-c#4" class="blackKeys"><p>C#</p></div>
+                <div id="user2-c4" class="whiteKeys pianoKey"><p>C</p>
+                  <div id="user2-c#4" class="blackKeys pianoKey"><p>C#</p></div>
                 </div>
-                <div id="user2-d4" class="whiteKeys"><p>D</p>
-                  <div id="user2-d#4" class="blackKeys"><p>D#</p></div>
+                <div id="user2-d4" class="whiteKeys pianoKey"><p>D</p>
+                  <div id="user2-d#4" class="blackKeys pianoKey"><p>D#</p></div>
                 </div>
-                <div id="user2-e4" class="whiteKeys"><p>E</p>
+                <div id="user2-e4" class="whiteKeys pianoKey"><p>E</p>
                 </div>
-                <div id="user2-f4" class="whiteKeys"><p>F</p>
-                  <div id="user2-f#4" class="blackKeys"><p>F#</p></div>
+                <div id="user2-f4" class="whiteKeys pianoKey"><p>F</p>
+                  <div id="user2-f#4" class="blackKeys pianoKey"><p>F#</p></div>
                 </div>
-                <div id="user2-g4" class="whiteKeys"><p>G</p>
-                  <div id="user2-g#4" class="blackKeys"><p>G#</p></div>
+                <div id="user2-g4" class="whiteKeys pianoKey"><p>G</p>
+                  <div id="user2-g#4" class="blackKeys pianoKey"><p>G#</p></div>
                 </div>
-                <div id="user2-a5" class="whiteKeys"><p>A</p>
-                  <div id="user2-a#5" class="blackKeys"><p>A#</p></div>
+                <div id="user2-a5" class="whiteKeys pianoKey"><p>A</p>
+                  <div id="user2-a#5" class="blackKeys pianoKey"><p>A#</p></div>
                 </div>
-                <div id="user2-b5" class="whiteKeys"><p>B</p>
+                <div id="user2-b5" class="whiteKeys pianoKey"><p>B</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-
 
     </div>
   </div>

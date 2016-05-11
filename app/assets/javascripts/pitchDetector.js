@@ -367,10 +367,9 @@ var displayAveragePitch = function (){
 
 			for (var i = 0; i*3 < playedNotes.length; i++) {
 				var notes = playedNotes.slice(i * 3, i * 3 + 3);
-				var $group = $('<div/>').addClass('whatever' + i).text(notes.join(', '));
-				$('#recordedNotes').append($group);
+				var $group = $('<div/>').addClass('appendedTriads').addClass('appendedTriads' + i).text(notes.join(', '));
+				$('#recordedNotes').prepend($group);
 			}
-//			$('#recordedNotes').append(noteStrings[note%12] + ', ');
 
 		}
 	}
