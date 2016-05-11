@@ -17,25 +17,36 @@ $(document).ready(function(){
   var key7Symbol;
   var key8Symbol;
 
-
   var audioContext = new AudioContext()
 
 ///// Click Keyboard to Hear Sounds
 $(".pianoKey").on('mousedown', function(event){
   event.stopPropagation();
   var osc = audioContext.createOscillator();
-  // var playedKey = ($('.pianoKey').val()).toLowerCase();
   var playedKey = $(this).find('p').first().text().toLowerCase();
-  console.log(playedKey);
+  // console.log($(this).hasClass('kb2'));
 
 
+  var startTime = audioContext.currentTime
+  var duration = 0.5
+  var endTime = startTime + duration
+  var envelope = audioContext.createGain() //the envelope creates a trailing/hollow effect
+  envelope.connect(audioContext.destination)
+  envelope.gain.value = 0.2
+  envelope.gain.setTargetAtTime(1, startTime, 0.1)
+  envelope.gain.setTargetAtTime(0, endTime, 0.2)
+  osc.connect(envelope)
+
+  if ($(this).hasClass('kb2')){
+    playedKey = (playedKey + 5).toString()
+    console.log(playedKey)
+  }
   osc.frequency.value = (teoria.note(playedKey)).fq();
   osc.type = 'triangle';
 
-
   osc.connect(audioContext.destination)
   osc.start(audioContext.currentTime)
-  osc.stop(audioContext.currentTime + 0.5)
+  osc.stop(audioContext.currentTime + 1)
 });
 
 
@@ -67,8 +78,6 @@ var id = function (key) {
 };
 
   var playTriad = function(){
-
-
 			play(0, note1, 0.5, function () {
         $(id(key1Symbol)).addClass("playing")
       });
