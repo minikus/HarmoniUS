@@ -1211,8 +1211,8 @@ module.exports = function helmholtz(name) {
   var parts = name.match(/^(,*)([a-h])(x|#|bb|b?)([,\']*)$/i);
 
   if (!parts || name !== parts[0])
+    alert("Please Enter Root Note! eg. C , C#, B, F ... ");
     throw new Error('Invalid formatting');
-
   var note = parts[2];
   var octaveFirst = parts[1];
   var octaveLast = parts[4];

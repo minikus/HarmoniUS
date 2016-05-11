@@ -78,9 +78,9 @@
               <h4 class="sameLine">Root Note: </h4>
               <span class="rootNote"></span>
             </span>
-            <span>
+            <div></div>
+            <!-- <span>
               <h4 class="sameLine sameLineOctave">Octave</h4>
-              <!-- <input id="octave" type="text" name="Please enter key" placeholder="1...7" value=""> -->
               <select id="selectedOctave">
                 <option value=1>1</option>
                 <option value=2>2</option>
@@ -91,22 +91,18 @@
                 <option value=7>7</option>
                 <option value=8>8</option>
               </select>
-            </span>
+            </span> -->
 
               <span class="inline">
-                <h4>Chord Type</h4>
-                <!-- <input id="octave" type="text" name="Please enter key" placeholder="1...7" value=""> -->
-                <select id="chordType">
-                  <option value="Major">Major</option>
-                  <option>Major-6th</option>
-                  <option>Minor</option>
-                  <option>Minor-7th</option>
-                  <option>Diminished</option>
-                  <option>Diminished-7th</option>
+                <h4>Chord Inversions</h4>
+                <select id="inversionType">
+                  <option>Root-Position</option>
+                  <option>Second-Inversion</option>
+                  <option>Third-Inversion</option>
                 </select>
               </span>
               <p></p>
-              <button id="playCompTriad" class ="btn btn-blue" value="submit">Play Complementarty Triad</button>
+              <button id="playCompTriad" class ="btn btn-blue" value="submit">Play Repeating Triad</button>
             </div>
           </div>
       </div>
