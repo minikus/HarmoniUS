@@ -72,7 +72,9 @@ $(".pianoKey").on('mousedown', function(event){
 		osc.disconnect(audioContext.destination)
 	})
 
-////// Play Triad
+
+//////////////////////// Play Triad
+
 var id = function (key) {
   return '#' + key.replace('#', '\\#');
 };
@@ -156,7 +158,7 @@ var id = function (key) {
 
 
 
-//////  play Scale
+//////////////////  play Scale
 
   var playScale = function(){
 
@@ -286,15 +288,6 @@ var id = function (key) {
     $("#scaleOutput").html(scaleResult.join(", "));
   });
 
-  $('#playTriad').click(function(){
-    playTriad();
-    // osc.disconnect(audioContext.destination);
-  });
-
-  $('#playScale').click(function(){
-    playScale();
-    // osc.disconnect(audioContext.destination)
-  });
 
   $('.blackKeys').hover(function () {
     $(this).closest('.whiteKeys').toggleClass('inactive');
@@ -305,4 +298,104 @@ var id = function (key) {
   }).on('mouseup', function () {
     $(this).closest('.whiteKeys').removeClass('unpressed');
   });
+
+
+
+  //////////////////////// Play Complementary Triad
+
+
+    var playCompTriad = function(){
+  			play(0, note1, 0.5, function () {
+          $(id(key1Symbol)).addClass("playing")
+        });
+        play(1, note2, 0.5, function () {
+          $(id(key2Symbol)).addClass("playing");
+        });
+  			play(2, note3, 0.5, function () {
+          $(id(key3Symbol)).addClass("playing");
+        }, function () {
+          $(id(key1Symbol)).removeClass("playing");
+          $(id(key2Symbol)).removeClass("playing");
+          $(id(key3Symbol)).removeClass("playing");
+        });
+
+
+  		function play (delay, frequency, duration, beforeCallback, afterCallback) {
+
+  		  var startTime = audioContext.currentTime + delay
+  		  var endTime = startTime + duration
+
+  		  var osc = audioContext.createOscillator();
+  		  osc.connect(audioContext.destination)
+  		  osc.frequency.value = frequency;
+
+  		  osc.start(startTime);
+        setTimeout(beforeCallback, delay * 1000);
+  		  osc.stop(endTime)
+        setTimeout(afterCallback, (delay * 1000) + (duration * 1000));
+
+
+        console.log(key1Symbol, key2Symbol, key3Symbol)
+  		}
+  	}
+
+    $("#playTriad").on('click', function(){
+      inputKey = ($('#inputKey').val()).toLowerCase();
+      $(".rootNote").html(inputKey.toUpperCase());
+      octave = $('#selectedOctave').val()
+      octaveUp = (parseInt(octave) + 1).toString();
+      scaleType = $('#scaleType').val()
+
+      key1Symbol = (inputKey + octave)
+      key1 = teoria.note(inputKey + octave);
+      scaleResult = key1.scale(scaleType).simple();
+
+      if (inputKey === "f" || inputKey === "f#" || inputKey === "g" || inputKey === "g#"){
+
+        key2Symbol = (scaleResult[2] + octave)
+        key2 = teoria.note(key2Symbol);
+
+        key3Symbol = (scaleResult[4] + octaveUp)
+        key3 = teoria.note(key3Symbol);
+
+      } else if (inputKey === "a" || inputKey === "a#" || inputKey === "b" || inputKey === "b#"){
+
+        key2Symbol = (scaleResult[2] + octaveUp)
+        key2 = teoria.note(key2Symbol);
+        key3Symbol = (scaleResult[4] + octaveUp)
+        key3 = teoria.note(key3Symbol);
+
+      } else {
+        key2Symbol = (scaleResult[2] + octave)
+        key2 = teoria.note(key2Symbol);
+        key3Symbol = (scaleResult[4] + octave)
+        key3 = teoria.note(key3Symbol);
+      }
+
+      note1 = key1.fq();
+      note2 = key2.fq();
+      note3 = key3.fq();
+
+      scaleResult = scaleResult.join().toUpperCase().split(",");
+        console.log(scaleResult)
+      $("#scaleOutput").html(scaleResult.join(", "));
+
+    });
+
+
+    $('#playTriad').click(function(){
+      playTriad();
+      // osc.disconnect(audioContext.destination);
+    });
+    $('#playScale').click(function(){
+      playScale();
+      // osc.disconnect(audioContext.destination)
+    });
+    $('#playCompTriad').click(function(){
+      playCompTriad();
+      // osc.disconnect(audioContext.destination)
+    });
+
+
+
 });
