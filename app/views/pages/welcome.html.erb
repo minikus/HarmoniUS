@@ -15,10 +15,13 @@
        <div class="panel panel-default">
          <h4 class="topPanel panel-heading">Select Input Type</h4>
          <div class="panel-body">
-           <button class="btn btn-success" onclick="this.innerText = togglePlayback()">Sample</button>
-           <button class="btn btn-danger" onclick="toggleLiveInput()">Live input</button>
-           <button class="btn btn-warning" onclick="toggleOscillator()">Oscillator</button>
-           <button class="btn btn-danger" onclick="stopOscillator()">Stop</button>
+           <button id="playSample" class="btn btn-success">Sample</button>
+           <button id="playLiveInput" class="btn btn-danger">Live input</button>
+           <button id="playOscillator" class="btn btn-warning">Oscillator</button>
+           <!-- <button id="startStop" class="btn btn-success" onclick="this.innerText = togglePlayback()">Sample</button>
+           <button id="startStop" class="btn btn-danger" onclick="this.innerText = toggleLiveInput()">Live input</button>
+           <button id="startStop" class="btn btn-warning" onclick="this.innerText = toggleOscillator()">Oscillator</button> -->
+             <!-- <button class="btn btn-danger" onclick="this.innerText = stopOscillator()">Stop</button> -->
 
            <!-- <button onclick="updatePitch(0);">sample</button> -->
          </div>
@@ -67,7 +70,7 @@
          </div>
          <div class="panel-body">
            <div id="harmonizing-match">
-             <div class="note"><span>Played Notes: </div>
+             <div class="matchingNotes"><span>Played Notes: </div>
            </div>
          </div>
        </div>

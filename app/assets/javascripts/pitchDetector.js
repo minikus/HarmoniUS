@@ -1,6 +1,10 @@
+$(document).ready(function(){
+
 window.AudioContext = window.AudioContext || window.webkitAudioContext;
+var displayNoteTimeout;
 var note;
 var detune;
+var pitch = null;
 var confidentToGuessNote = null;
 var audioContext = null;
 var isPlaying = false;
@@ -86,7 +90,6 @@ function getUserMedia(dictionary, callback) {
 function gotStream(stream) {
     // Create an AudioNode from the stream.
     mediaStreamSource = audioContext.createMediaStreamSource(stream);
-
     // Connect it to the destination.
     analyser = audioContext.createAnalyser();
     analyser.fftSize = 2048;
@@ -95,6 +98,19 @@ function gotStream(stream) {
     updatePitch();
 }
 
+$('#playOscillator').on('click', function(){
+	toggleOscillator();
+	// this.innerText = "Stop Oscillator";
+});
+$('#playSample').on('click', function(){
+	togglePlayback();
+	// this.innerText = "Stop Sample";
+});
+$('#playLiveInput').on('click', function(){
+	toggleLiveInput();
+	// this.innerText = "Stop Live Input";
+});
+
 function toggleOscillator() {
     if (isPlaying) {
         //stop playing and return
@@ -102,10 +118,12 @@ function toggleOscillator() {
         sourceNode = null;
         analyser = null;
         isPlaying = false;
-		if (!window.cancelAnimationFrame)
-			window.cancelAnimationFrame = window.webkitCancelAnimationFrame;
-        window.cancelAnimationFrame( rafID );
-        return "play oscillator";
+				stopNoteDisplay();
+				if (!window.cancelAnimationFrame){
+					window.cancelAnimationFrame = window.webkitCancelAnimationFrame;
+				}
+      	window.cancelAnimationFrame( rafID );
+        return "Oscillator";
     }
     sourceNode = audioContext.createOscillator();
 
@@ -119,20 +137,26 @@ function toggleOscillator() {
 		displayAveragePitch();
     updatePitch();
 
-    return "stop";
+    return "Stop Oscillator";
 }
 
 function toggleLiveInput() {
     if (isPlaying) {
         //stop playing and return
-        sourceNode.stop( 0 );
-        sourceNode = null;
+        // mediaStreamSource.close(); //sourceNode.stop( 0 );
+        // mediaStreamSource = null; //sourceNode = null;
+				//audioContext.close();
         analyser = null;
+				mediaStreamSource.disconnect(); // disconnects the microphone stram on stop.
         isPlaying = false;
-		if (!window.cancelAnimationFrame)
-			window.cancelAnimationFrame = window.webkitCancelAnimationFrame;
+				stopNoteDisplay();
+				if (!window.cancelAnimationFrame){
+					window.cancelAnimationFrame = window.webkitCancelAnimationFrame;
+				}
         window.cancelAnimationFrame( rafID );
+				return "Live Input"
     }
+		isPlaying = true;
     getUserMedia(
     	{
             "audio": {
@@ -145,7 +169,7 @@ function toggleLiveInput() {
                 "optional": []
             },
         }, gotStream);
-
+				return "Stop Input"
 }
 
 function togglePlayback() {
@@ -155,10 +179,12 @@ function togglePlayback() {
         sourceNode = null;
         analyser = null;
         isPlaying = false;
-		if (!window.cancelAnimationFrame)
-			window.cancelAnimationFrame = window.webkitCancelAnimationFrame;
-        window.cancelAnimationFrame( rafID );
-        return "start";
+				stopNoteDisplay();
+				if (!window.cancelAnimationFrame){
+					window.cancelAnimationFrame = window.webkitCancelAnimationFrame;
+				}
+	      window.cancelAnimationFrame( rafID );
+	      return "Sample";
     }
 
     sourceNode = audioContext.createBufferSource();
@@ -175,7 +201,7 @@ function togglePlayback() {
 		displayAveragePitch();
     updatePitch();
 
-    return "stop";
+    return "Stop Sample";
 }
 
 var rafID = null;
@@ -291,6 +317,7 @@ function updatePitch( time ) {
  	} else {
 		confidentToGuessNote = true;
 	 	pitch = ac;
+		//console.log("ac: ", ac)
 	 	note =  noteFromPitch( pitch );
 		detune = centsOffFromPitch( pitch, note );
 	}
@@ -303,42 +330,52 @@ function updatePitch( time ) {
 }
 
 var displayAveragePitch = function (){
-
-	if (confidentToGuessNote === false) {
-		detectorElem.className = "vague";
-		pitchElem.innerText = "--";
-		noteElem.innerText = "-";
-		detuneElem.className = "";
-		detuneAmount.innerText = "--";
-	}else{
-		// we ARE confident to output a guess
-		detectorElem.className = "confident";
-		pitchElem.innerText = Math.round( pitch ) ;
-		noteElem.innerHTML = noteStrings[note%12];
-
-		if (detune == 0 ) {
+	if (pitch){
+	 //console.log(pitch);
+		if (confidentToGuessNote === false) {
+			detectorElem.className = "vague";
+			pitchElem.innerText = "--";
+			noteElem.innerText = "-";
 			detuneElem.className = "";
-			detuneAmount.innerHTML = "--";
-		} else {
-			if (detune < 0) {
-				detuneElem.className = "flat";
+			detuneAmount.innerText = "--";
+		}else{
+			// we ARE confident to output a guess
+			detectorElem.className = "confident";
+			pitchElem.innerText = Math.round( pitch ) ;
+			noteElem.innerHTML = noteStrings[note%12];
+			console.log(noteStrings[note%12]);
+			//
+
+			if (detune == 0 ) {
+				detuneElem.className = "";
+				detuneAmount.innerHTML = "--";
 			} else {
-				detuneElem.className = "sharp";
+				if (detune < 0) {
+					detuneElem.className = "flat";
+				} else {
+					detuneElem.className = "sharp";
+				}
+				detuneAmount.innerHTML = Math.abs( detune );
+
 			}
-			detuneAmount.innerHTML = Math.abs( detune );
+			$('#recordedNotes').append(noteStrings[note%12] + ', ');
+
 		}
-		$('#recordedNotes').append(noteStrings[note%12] + ', ');
 	}
-	setTimeout(displayAveragePitch, 500);
+	displayTimeout = setTimeout(displayAveragePitch, 500);
+
 }
 
-$(document).ready(function(){
-	var stopOscillator = function(){
-		
+var stopNoteDisplay = function(){
+	if (displayTimeout){
+		clearTimeout(displayTimeout);
+		displayTimeout = 0;
 	}
+}
 
-});
-
+// var group2Notes = function(){
+// 	if
+// }
 
 
 var _gaq = _gaq || [];
@@ -350,3 +387,5 @@ _gaq.push(['_trackPageview']);
 	ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
 	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 })();
+
+});
