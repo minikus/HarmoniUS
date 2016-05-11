@@ -44,11 +44,12 @@ $(document).ready(function(){
 	})
 
 ////// Play Triad
+var id = function (key) {
+  return '#' + key.replace('#', '\\#');
+};
 
   var playTriad = function(){
-      var id = function (key) {
-        return '#' + key.replace('#', '\\#');
-      };
+
 
 			play(0, note1, 0.5, function () {
         $(id(key1Symbol)).addClass("playing")
@@ -59,7 +60,6 @@ $(document).ready(function(){
 			play(2, note3, 0.5, function () {
         $(id(key3Symbol)).addClass("playing");
       }, function () {
-
         $(id(key1Symbol)).removeClass("playing");
         $(id(key2Symbol)).removeClass("playing");
         $(id(key3Symbol)).removeClass("playing");
@@ -134,40 +134,38 @@ $(document).ready(function(){
   var playScale = function(){
 
 			play(0, note1, 0.3, function(){
-        $("#" +key1).css("background-color", "rgb(171, 200, 213)")
+        $(id(key1Symbol)).addClass("playing")
       });
 			play(0.5, note2, 0.3, function(){
-        $("#" +key1).css("background-color", "rgb(171, 200, 213)")
+        $(id(key2Symbol)).addClass("playing")
       });
 			play(1, note3, 0.3, function(){
-        $("#" +key1).css("background-color", "rgb(171, 200, 213)")
+        $(id(key3Symbol)).addClass("playing")
       });
       play(1.5, note4, 0.3, function(){
-        $("#" +key1).css("background-color", "rgb(171, 200, 213)")
+        $(id(key4Symbol)).addClass("playing")
       });
       play(2, note5, 0.3, function(){
-        $("#" +key1).css("background-color", "rgb(171, 200, 213)")
+        $(id(key5Symbol)).addClass("playing")
       });
       play(2.5, note6, 0.3, function(){
-        $("#" +key1).css("background-color", "rgb(171, 200, 213)")
+        $(id(key6Symbol)).addClass("playing")
       });
       play(3, note7, 0.3, function(){
-        $("#" +key1).css("background-color", "rgb(171, 200, 213)")
+        $(id(key7Symbol)).addClass("playing")
       });
       play(3.5, note8, 0.3, function(){
-        $("#" +key1).css("background-color", "rgb(171, 200, 213)")
-      });
-      play(4, note9, 0.3, function(){
-        $("#" +key1).css("background-color", "rgb(171, 200, 213)")
+        $(id(key8Symbol)).addClass("playing")
       }, function(){
-        $("#" +key1).css("background-color", "white");
-        $("#" +key2).css("background-color", "white");
-        $("#" +key3).css("background-color", "white");
-        $("#" +key4).css("background-color", "white");
-        $("#" +key5).css("background-color", "white");
-        $("#" +key6).css("background-color", "white");
-        $("#" +key7).css("background-color", "white");
-        $("#" +key8).css("background-color", "white");
+        $(id(key1Symbol)).removeClass("playing");
+        $(id(key2Symbol)).removeClass("playing");
+        $(id(key3Symbol)).removeClass("playing");
+        $(id(key4Symbol)).removeClass("playing");
+        $(id(key5Symbol)).removeClass("playing");
+        $(id(key6Symbol)).removeClass("playing");
+        $(id(key7Symbol)).removeClass("playing");
+        $(id(key8Symbol)).removeClass("playing");
+
       });
 
       function play (delay, frequency, duration, beforeCallback, afterCallback) {
@@ -192,33 +190,54 @@ $(document).ready(function(){
     octaveUp = (parseInt(octave) + 1).toString();
     scaleType = $('#scaleType').val()
 
+    // debugger;
+    key1Symbol = (inputKey + octave)
     key1 = teoria.note(inputKey + octave);
     scaleResult = key1.scale(scaleType).simple();
-    key2 = teoria.note(scaleResult[1] + octave);
-    key3 = teoria.note(scaleResult[2] + octave);
-    key4 = teoria.note(scaleResult[3] + octave);
-    key5 = teoria.note(scaleResult[4] + octave);
-    key6 = teoria.note(scaleResult[5] + octave);
-    key7 = teoria.note(scaleResult[6] + octave);
-    key8 = teoria.note(inputKey + octaveUp);
 
+    key2Symbol = (scaleResult[1] + octave)
+    key2 = teoria.note(key2Symbol);
+
+    key3Symbol = (scaleResult[2] + octave)
+    key3 = teoria.note(key3Symbol);
+
+    key4Symbol = (scaleResult[3] + octave)
+    key4 = teoria.note(key4Symbol);
+
+    key5Symbol = (scaleResult[4] + octave)
+    key5 = teoria.note(key5Symbol);
+
+    key6Symbol = (scaleResult[5] + octave)
+    key6 = teoria.note(key6Symbol);
+
+    key7Symbol = (scaleResult[6] + octave)
+    key7 = teoria.note(key7Symbol);
+
+    key8Symbol = (inputKey + octaveUp)
+    key8 = teoria.note(key8Symbol);
 
     if (inputKey !== "c" && inputKey !== "c#"){
-      key7 = teoria.note(scaleResult[6] + octaveUp);
+      key7Symbol = (scaleResult[6] + octaveUp)
+      key7 = teoria.note(key7Symbol);
 
       if (inputKey !== "d" && inputKey !== "d#") {
-        key6 = teoria.note(scaleResult[5] + octaveUp);
+        key6Symbol = (scaleResult[5] + octaveUp)
+        key6 = teoria.note(key6Symbol);
 
         if (inputKey !== "e" && inputKey !== "e#"){
+          key5Symbol = (scaleResult[5] + octaveUp)
           key5 = teoria.note(scaleResult[4] + octaveUp);
 
           if (inputKey !== "f" && inputKey !== "f#"){
+            key4Symbol = (scaleResult[3] + octaveUp)
             key4 = teoria.note(scaleResult[3] + octaveUp);
 
             if (inputKey !== "g" && inputKey !== "g#"){
+              key3Symbol = (scaleResult[2] + octaveUp)
               key3 = teoria.note(scaleResult[2] + octaveUp);
 
               if (inputKey !== "a" && inputKey !== "a#"){
+                key2Symbol = (scaleResult[1] + octaveUp)
                 key2 = teoria.note(scaleResult[1] + octaveUp);
               }
             }
@@ -226,7 +245,6 @@ $(document).ready(function(){
         }
       }
     }
-
     note1 = key1.fq();
     note2 = key2.fq();
     note3 = key3.fq();
@@ -236,12 +254,10 @@ $(document).ready(function(){
     note7 = key7.fq();
     note8 = key8.fq();
 
-
     scaleResult = scaleResult.join().toUpperCase().split(",");
       console.log(scaleResult)
     $("#scaleOutput").html(scaleResult.join(", "));
   });
-
 
   $('#playTriad').click(function(){
     playTriad();
@@ -262,7 +278,6 @@ $(document).ready(function(){
   }).on('mouseup', function () {
     $(this).closest('.whiteKeys').removeClass('unpressed');
   });
-
 
 
 

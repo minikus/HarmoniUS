@@ -15,9 +15,11 @@
        <div class="panel panel-default">
          <h4 class="topPanel panel-heading">Select Input Type</h4>
          <div class="panel-body">
-           <button class="btn btn-success" onclick="this.innerText = togglePlayback()">demo audio</button>
-           <button class="btn btn-danger" onclick="toggleLiveInput()">live input</button>
-           <button class="btn btn-warning" onclick="toggleOscillator()">oscillator</button>
+           <button class="btn btn-success" onclick="this.innerText = togglePlayback()">Sample</button>
+           <button class="btn btn-danger" onclick="toggleLiveInput()">Live input</button>
+           <button class="btn btn-warning" onclick="toggleOscillator()">Oscillator</button>
+           <button class="btn btn-danger" onclick="stopOscillator()">Stop</button>
+
            <!-- <button onclick="updatePitch(0);">sample</button> -->
          </div>
        </div>
@@ -54,8 +56,7 @@
            <h3 class="panel-title">User 1 played notes:</h3>
          </div>
          <div class="panel-body">
-           <div id="saved-output">
-             <div class="note"><span>Played Notes: </div>
+           <div id="recordedNotes">
            </div>
          </div>
        </div>
