@@ -3,8 +3,9 @@ $(document).ready(function(){
 window.AudioContext = window.AudioContext || window.webkitAudioContext;
 var displayNoteTimeout;
 var note;
+var playedNotes = [];
 var detune;
-var pitch = null;
+var pitch = null; //this shows the frequency of notes
 var confidentToGuessNote = null;
 var audioContext = null;
 var isPlaying = false;
@@ -319,6 +320,7 @@ function updatePitch( time ) {
 	 	pitch = ac;
 		//console.log("ac: ", ac)
 	 	note =  noteFromPitch( pitch );
+		// console.log("note: ", note)
 		detune = centsOffFromPitch( pitch, note );
 	}
 
@@ -358,7 +360,17 @@ var displayAveragePitch = function (){
 				detuneAmount.innerHTML = Math.abs( detune );
 
 			}
-			$('#recordedNotes').append(noteStrings[note%12] + ', ');
+			playedNotes.push(noteStrings[note%12]);
+			console.log( playedNotes );
+
+			$('#recordedNotes').empty();
+
+			for (var i = 0; i*3 < playedNotes.length; i++) {
+				var notes = playedNotes.slice(i * 3, i * 3 + 3);
+				var $group = $('<div/>').addClass('whatever' + i).text(notes.join(', '));
+				$('#recordedNotes').append($group);
+			}
+//			$('#recordedNotes').append(noteStrings[note%12] + ', ');
 
 		}
 	}
@@ -372,6 +384,18 @@ var stopNoteDisplay = function(){
 		displayTimeout = 0;
 	}
 }
+
+// console.log("frequency: ", frequency);
+// var chordNotesCount = 0;
+// var chordList = [];
+// var currentChord = [];
+// ​
+// currentChord[ chordNotesCount++ ] = note;
+// ​
+// if(chordNotesCount > 2) {
+//   chordList.push( currentChord );
+//   chordNotesCount = 0;
+// }
 
 // var group2Notes = function(){
 // 	if
