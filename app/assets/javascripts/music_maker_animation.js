@@ -2,11 +2,6 @@ $(document).ready(function() {
 
   if ($('.showBalls').length > 0){
 
-
-
-
-
-
     var startBallAnimation = function() {
     $('.ballsShow').remove();
 
@@ -138,28 +133,28 @@ $(document).ready(function() {
         });
       };
     }
+  }
 
-}
+  //animates when single notes are played
+  $('#playKey').on('mousedown', function(){
 
-//animates when single notes are played
-$('#selectedKey').on('mousedown', function(){
+    var inputKey = ($('#inputKey').val()).toLowerCase();
+    var octave = $('#selectedOctave').val()
+    var frequency = (teoria.note(inputKey + octave)).fq();
+    numberOfBalls = Math.floor(frequency)/10
+    startBallAnimation(numberOfBalls);
+  });
 
-  var inputKey = ($('#inputKey').val()).toLowerCase();
-  var octave = $('#selectedOctave').val()
-  var frequency = (teoria.note(inputKey + octave)).fq();
-  numberOfBalls = Math.floor(frequency)/10
-  startBallAnimation(numberOfBalls);
-});
+  //animates when scales and triads are played
+  $('#playScale').on('mousedown', function(){
+    // debugger;
+    var inputKey = ($('#inputKey').val()).toLowerCase();
+    var octave = $('#selectedOctave').val()
+    frequency = (teoria.note(inputKey + octave)).fq();
+    var numberOfBalls = Math.floor(frequency)/10
+    startBallAnimation(numberOfBalls);
+  });
 
-//animates when scales and triads are played
-$('#playTriad').on('mousedown', function(){
+  };
 
-  var inputKey = ($('#selectedKey').val()).toLowerCase();
-  var octave = $('#selectedOctave').val()
-  var frequency = (teoria.note(inputKey + octave)).fq();
-  var numberOfBalls = Math.floor(frequency)/10
-  startBallAnimation(numberOfBalls);
-});
-
-};
 });
