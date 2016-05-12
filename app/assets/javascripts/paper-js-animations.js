@@ -10,7 +10,8 @@ function Ball(r, p, v) {
 	this.sidePoints = [];
 	this.path = new Path({
 		fillColor: {
-			hue: Math.random() * 360,
+			// hue: Math.random() * 360,
+			hue: 280,
 			saturation: 1,
 			brightness: 1
 		},

@@ -2,6 +2,12 @@
   margin-bottom: 40px;
 }
 
+.btn-purple {
+    color: #fff;
+    background-color: rgba(103, 58, 183, 0.78);
+    border-color: #550CD8;
+}
+
 #selectedKey, #selectedOctave, #scaleType, #inversionType, #rateOfOutput{
   background-color: #fff;
   border-color: #ccc;
@@ -71,13 +77,13 @@ h5.keyInputs{
   margin-left: 20px;
 }
 
-.btn-blue {
-    color: #fff;
-    background-color: #4288A7;
-    border-color: #9AB2BD;
-}
+// .btn-blue {
+//     color: #fff;
+//     background-color: #4288A7;
+//     border-color: #9AB2BD;
+// }
 
-.btn.btn-blue:hover {
+.btn.btn-purple:hover {
   background-color: #2A596D;
   color: white;
 }
