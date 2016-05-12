@@ -105,8 +105,13 @@ function gotStream(stream) {
 
 $('#playOscillator').on('click', function(){
 	toggleOscillator();
-	$(this).html("Stop Oscillator");
+	if ($(this).html() == "Sample Oscillator (A)"){
+		$(this).html('Stop Oscillator');
+	} else {
+		$(this).html("Sample Oscillator (A)");
+	}
 });
+
 $('#playSample').on('click', function(){
 	togglePlayback();
 
@@ -116,16 +121,29 @@ $('#playSample').on('click', function(){
 		$(this).html("Sample Piano (C)");
 	}
 });
+
 $('#playLiveInput').on('click', function(){
 	user1 = true;
 	user2 = false;
 	toggleLiveInput();
-	$(this).html("Stop Live Input");
+
+	if ($(this).html() == "Start / Stop: User 1 Live Input"){
+		$(this).html('Stop Live Input');
+	} else {
+		$(this).html("Start / Stop: User 1 Live Input");
+	}
+
 });
 $('#playLiveInput2').on('click', function(){
 	user1 = false;
 	user2 = true;
  	toggleLiveInput();
+
+	if ($(this).html() == "Start / Stop: User 2 Live Input"){
+		$(this).html('Stop Live Input');
+	} else {
+		$(this).html("Start / Stop: User 2 Live Input");
+	}
 });
 
 
