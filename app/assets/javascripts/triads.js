@@ -1,5 +1,6 @@
 
 $(document).ready(function(){
+  var inversionType;
   var inputKey;
   var octave;
   var octaveUp;
@@ -21,6 +22,7 @@ $(document).ready(function(){
 
 ///// Click Keyboard to Hear Sounds
 $(".pianoKey").on('mousedown', function(event){
+  // debugger;
   event.stopPropagation();
   var osc = audioContext.createOscillator();
   var playedKey = $(this).find('p').first().text().toLowerCase();
@@ -40,6 +42,8 @@ $(".pianoKey").on('mousedown', function(event){
   if ($(this).hasClass('kb2')){
     playedKey = (playedKey + 5).toString()
     console.log(playedKey)
+  } else {
+    playedKey = (playedKey + 3).toString();
   }
   osc.frequency.value = (teoria.note(playedKey)).fq();
   osc.type = 'triangle';
@@ -50,7 +54,8 @@ $(".pianoKey").on('mousedown', function(event){
 });
 
 
-///// Play Single Notes
+
+///// Select Single Notes
 
 	$("#selectedKey").on('change',function(){
 		osc.frequency.value = parseFloat( $(this).val() );
@@ -305,24 +310,56 @@ var id = function (key) {
 
 
     var playCompTriad = function(){
-  			play(0, note1, 0.5, function () {
+
+      if (inversionType === "Second-Inversion"){
+
+        play(0, note2, 0.5, function () {
           $(id(key1Symbol)).addClass("playing")
         });
-        play(0.5, note2, 0.5, function () {
+        play(1, note3, 0.5, function () {
           $(id(key2Symbol)).addClass("playing");
         });
-  			play(1, note3, 1, function () {
+        play(2, note1, 0.5, function () {
           $(id(key3Symbol)).addClass("playing");
-        });
-        play(2, note2, 0.5, function () {
-          $(id(key2Symbol)).addClass("playing");
-        },
-         function () {
+        }, function () {
           $(id(key1Symbol)).removeClass("playing");
           $(id(key2Symbol)).removeClass("playing");
           $(id(key3Symbol)).removeClass("playing");
         });
 
+      } else if (inversionType === "Third-Inversion"){
+
+        play(0, note3, 0.5, function () {
+          $(id(key1Symbol)).addClass("playing")
+        });
+        play(1, note2, 0.5, function () {
+          $(id(key2Symbol)).addClass("playing");
+        });
+  			play(2, note1, 0.5, function () {
+          $(id(key3Symbol)).addClass("playing");
+        }, function () {
+          $(id(key1Symbol)).removeClass("playing");
+          $(id(key2Symbol)).removeClass("playing");
+          $(id(key3Symbol)).removeClass("playing");
+        });
+
+      } else {
+
+        play(0, note1, 0.5, function () {
+          $(id(key1Symbol)).addClass("playing")
+        });
+        play(1, note2, 0.5, function () {
+          $(id(key2Symbol)).addClass("playing");
+        });
+        play(2, note3, 0.5, function () {
+          $(id(key3Symbol)).addClass("playing");
+        }, function () {
+          $(id(key1Symbol)).removeClass("playing");
+          $(id(key2Symbol)).removeClass("playing");
+          $(id(key3Symbol)).removeClass("playing");
+        });
+
+      }
 
   		function play (delay, frequency, duration, beforeCallback, afterCallback) {
   		  var startTime = audioContext.currentTime + delay
@@ -338,45 +375,63 @@ var id = function (key) {
         setTimeout(afterCallback, (delay * 1000) + (duration * 1000));
 
 
-        console.log(key1Symbol, key2Symbol, key3Symbol)
   		}
   	}
 
     $("#playCompTriad").on('click', function(){
+
       inputKey = ($('#inputKey').val()).toLowerCase();
       $(".rootNote").html(inputKey.toUpperCase());
-      octave = parseInt($('#selectedOctave').val()) + 2
+      octave = parseInt($('#selectedOctave2').val()) + 2
       console.log("octave: ", octave)
       octaveUp = (parseInt(octave) + 1).toString();
+
       scaleType = $('#scaleType').val()
       inversionType = $('#inversionType').val();
       console.log(inversionType);
 
-      key1Symbol = (inputKey + octave)
-      key1 = teoria.note(inputKey + octave);
+      if (inversionType === "Second-Inversion"){
+        key1Symbol = (inputKey + octaveUp)
+      } else {
+        key1Symbol = (inputKey + octave)
+      }
+
+      key1 = teoria.note(key1Symbol);
       scaleResult = key1.scale(scaleType).simple();
 
       if (inputKey === "f" || inputKey === "f#" || inputKey === "g" || inputKey === "g#"){
 
-        key2Symbol = (scaleResult[2] + octave)
-        key2 = teoria.note(key2Symbol);
-
-        key3Symbol = (scaleResult[4] + octaveUp)
-        key3 = teoria.note(key3Symbol);
+        if (inversionType === "Third-Inversion"){
+          key2Symbol = (scaleResult[2] + octave)
+          key3Symbol = (scaleResult[4] + octave)
+        } else{
+          key2Symbol = (scaleResult[2] + octave)
+          key3Symbol = (scaleResult[4] + octaveUp)
+        }
 
       } else if (inputKey === "a" || inputKey === "a#" || inputKey === "b" || inputKey === "b#"){
 
-        key2Symbol = (scaleResult[2] + octaveUp)
-        key2 = teoria.note(key2Symbol);
-        key3Symbol = (scaleResult[4] + octaveUp)
-        key3 = teoria.note(key3Symbol);
+        if (inversionType === "Third-Inversion"){
+          key2Symbol = (scaleResult[2] + octaveUp)
+          key3Symbol = (scaleResult[4] + octave)
+        }else{
+          key2Symbol = (scaleResult[2] + octaveUp)
+          key3Symbol = (scaleResult[4] + octaveUp)
+        }
 
       } else {
-        key2Symbol = (scaleResult[2] + octave)
-        key2 = teoria.note(key2Symbol);
-        key3Symbol = (scaleResult[4] + octave)
-        key3 = teoria.note(key3Symbol);
+          key2Symbol = (scaleResult[2] + octave)
+        // key2 = teoria.note(key2Symbol);
+        if (inversionType === "Third-Inversion"){
+          key3Symbol = (scaleResult[4] + (parseInt(octave) - 1).toString() )
+        // key3 = teoria.note(key3Symbol);
+      } else{
+          key3Symbol = (scaleResult[4] + octave)
+        }
       }
+
+      key2 = teoria.note(key2Symbol);
+      key3 = teoria.note(key3Symbol);
 
       note1 = key1.fq();
       note2 = key2.fq();
@@ -399,7 +454,6 @@ var id = function (key) {
     $('#playCompTriad').click(function(){
       playCompTriad();
     });
-
 
 
 });

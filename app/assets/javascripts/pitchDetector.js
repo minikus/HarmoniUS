@@ -1,8 +1,8 @@
 $(document).ready(function(){
 
 window.AudioContext = window.AudioContext || window.webkitAudioContext;
-// var user1 = true;
-// var user2 = false;
+var user1 = true;
+var user2 = false;
 var rateOfOutput = 500;
 var displayNoteTimeout;
 var note;
@@ -105,17 +105,22 @@ function gotStream(stream) {
 
 $('#playOscillator').on('click', function(){
 	toggleOscillator();
-	// this.innerText = "Stop Oscillator";
+	$(this).html("Stop Oscillator");
 });
 $('#playSample').on('click', function(){
 	togglePlayback();
-	// this.innerText = "Stop Sample";
+
+	if ($(this).html() == "Sample Piano (C)"){
+		$(this).html('Stop Sample');
+	} else {
+		$(this).html("Sample Piano (C)");
+	}
 });
 $('#playLiveInput').on('click', function(){
 	user1 = true;
 	user2 = false;
 	toggleLiveInput();
-	// this.innerText = "Stop Live Input";
+	$(this).html("Stop Live Input");
 });
 $('#playLiveInput2').on('click', function(){
 	user1 = false;
@@ -373,17 +378,51 @@ var displayAveragePitch = function (){
 				detuneAmount.innerHTML = Math.abs( detune );
 			}
 
-			user1playedNotes.push(noteStrings[note%12]);
+			// user1playedNotes.push(noteStrings[note%12]);
+			//
+			// $('#recordedNotes').empty();
+			//
+			// for (var i = 0; i*3 < user1playedNotes.length; i++) {
+			// 	var notes = user1playedNotes.slice(i * 3, i * 3 + 3);
+			// 	var $group = $('<div/>').addClass('appendedTriads').addClass('appendedTriads' + i).text(notes.join(', '));
+			// 	$('#recordedNotes').prepend($group);
+			// }
 
-			$('#recordedNotes').empty();
 
-			for (var i = 0; i*3 < user1playedNotes.length; i++) {
-				var notes = user1playedNotes.slice(i * 3, i * 3 + 3);
-				var $group = $('<div/>').addClass('appendedTriads').addClass('appendedTriads' + i).text(notes.join(', '));
-				$('#recordedNotes').prepend($group);
+			if (user1){
+				user1playedNotes.push(noteStrings[note%12]);
+				// console.log( user1playedNotes );
+			} else {
+				user2playedNotes.push(noteStrings[note%12]);
 			}
+
+
+			if (user1){
+				$('#recordedNotes').empty();
+
+				for (var i = 0; i*3 < user1playedNotes.length; i++) {
+					var notes = user1playedNotes.slice(i * 3, i * 3 + 3);
+					var $group = $('<div/>').addClass('appendedTriads').addClass('appendedTriads' + i).text(notes.join(', '));
+					$('#recordedNotes').prepend($group);
+				}
+			} else {
+				$('#matchingNotes').empty();
+
+				for (var i = 0; i*3 < user2playedNotes.length; i++) {
+					var notes = user2playedNotes.slice(i * 3, i * 3 + 3);
+					var $group = $('<div/>').addClass('appendedTriads').addClass('appendedTriads' + i).text(notes.join(', '));
+					$('#matchingNotes').prepend($group);
+				}
+			}
+
 		}
 	}
+
+
+
+
+
+
 	rateOfOutput = parseInt($('#rateOfOutput').val());
 	displayTimeout = setTimeout(displayAveragePitch, rateOfOutput);
 }
