@@ -15,4 +15,7 @@
 //= require bootstrap-sprockets
 //= require underscore
 //= require paper
+//= require d3
+//= require triads
+//= require pitchDetector
 //= require_tree .

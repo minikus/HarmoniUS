@@ -112,7 +112,7 @@ Ball.prototype = {
 
 //--------------------- main ---------------------
 var balls = [];
-var numBalls = 18;
+var numBalls = 16; 
 for (var i = 0; i < numBalls; i++) {
 	var position = Point.random() * view.size;
 	var vector = new Point({

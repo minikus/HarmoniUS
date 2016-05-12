@@ -23,6 +23,7 @@ $(document).ready(function(){
 ///// Click Keyboard to Hear Sounds
 $(".pianoKey").on('mousedown', function(event){
   // debugger;
+  $('.canvas').css('visibility', 'visible');
   event.stopPropagation();
   var osc = audioContext.createOscillator();
   var playedKey = $(this).find('p').first().text().toLowerCase();
@@ -70,7 +71,6 @@ $(".pianoKey").on('mousedown', function(event){
 	$('#playKey').click(function(){
 		//osc.start(audioContext.currentTime)
 		osc.connect(audioContext.destination)
-
 	})
 	$('#stopKey').click(function(){
 		//osc.stop(audioContext.currentTime)
@@ -445,15 +445,16 @@ var id = function (key) {
 
     $('#playTriad').click(function(){
       playTriad();
+
     });
 
     $('#playScale').click(function(){
       playScale();
+
     });
 
     $('#playCompTriad').click(function(){
       playCompTriad();
     });
-
 
 });
