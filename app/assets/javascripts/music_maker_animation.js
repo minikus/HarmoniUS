@@ -1,9 +1,14 @@
 $(document).ready(function() {
 
   if ($('.showBalls').length > 0){
-    $('#change').on('mouseup', function() {
+    $('#selectedKey').on('change', function() {
     $('.ballsShow').remove();
-    var $number = $('#change').val();
+
+    var inputKey = ($('#inputKey').val()).toLowerCase();
+    var frequency = (teoria.note(inputKey + 1)).fq();
+    var $number = Math.floor(frequency)
+
+    // var $number = Math.floor($('#selectedKey').val());
 
     var width = 1200,
       height = 800,

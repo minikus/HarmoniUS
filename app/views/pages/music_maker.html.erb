@@ -1,27 +1,21 @@
 <div class="tunerTitle col-lg-12">
-  <h1>Music Maker</h1>
-  <h4 class="grey">
-    Take previous knowledge of what you learned, <br>and make some sound and melodies within a scale.
-  </h4>
-  <div class="canvas">
-    <canvas resize="true" id="canvas-1" style="background:black" class="canvas-1"></canvas>
+  <div class="row">
+    <h1>Music Maker</h1>
+    <h4 class="grey">
+      Take previous knowledge of what you learned, <br>and make some sound and melodies within a scale.
+    </h4>
+    <div class="showBalls">
+    </div>
   </div>
-  <div class="showBalls">
-    <select name="mySelect" id="change">
-      <option value=1>A#</option>
-      <option value=2>B</option>
-      <option value=3>C</option>
-    </select>
-  </div>
+
 <div class="row">
-  <div class="col-lg-4">
+  <div class="col-lg-3">
     <div class="bs-component">
       <div class="panel panel-default">
         <h4 class="topPanel panel-heading"><span>Select Single Notes</span></h4>
         <div class="panel-body">
           <button id="playKey" class ="btn btn-success">Play</button>
           <button id="stopKey" class ="btn btn-danger">Stop</button>
-
           <select name="mySelect" id="selectedKey">
             <option value="233.082">A#</option>
             <option value="246.942">B</option>
@@ -42,12 +36,12 @@
       <div class="panel panel-default">
         <h4 class="topPanel panel-heading"><span>Input Root Note to play Triads</span></h4>
         <div class="panel-body">
-          <span>
+          <div>
             <h4 class="sameLine">Key</h4>
             <input id="inputKey" type="text" name="Please enter key" placeholder=" C, C#, A..." value="">
-          </span>
+          </div>
           <span>
-            <h4 class="sameLine sameLineOctave">Octave</h4>
+            <h4>Octave</h4>
             <!-- <input id="octave" type="text" name="Please enter key" placeholder="1...7" value=""> -->
             <select id="selectedOctave">
               <option value=1>1</option>
@@ -93,7 +87,27 @@
     </div>
   </div>
 
-  <div class="col-lg-4">
+  <div class="col-lg-3">
+    <div class="bs-component">
+      <div class="panel panel-warning">
+        <div class="panel-heading">
+          <h3 class="panel-title">Sine Tones</h3>
+        </div>
+        <div class="panel-body">
+        </div>
+      </div>
+
+      <div class="panel panel-warning">
+        <div class="panel-heading">
+          <h3 class="panel-title">Make some beats</h3>
+        </div>
+        <div class="panel-body">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-3">
     <div class="bs-component">
       <div class="panel panel-warning">
         <div class="panel-heading">
@@ -114,7 +128,7 @@
   </div>
 
 
-  <div class="col-lg-4">
+  <div class="col-lg-3">
     <div class="bs-component">
       <div class="panel panel-warning">
         <div class="panel-heading">
