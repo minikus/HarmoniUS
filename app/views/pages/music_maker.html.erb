@@ -1,5 +1,6 @@
 <div class="tunerTitle col-lg-12">
   <div class="row">
+
     <h1>Music Maker</h1>
     <h4 class="grey">
       Take previous knowledge of what you learned, <br>and make some sound and melodies within a scale.
@@ -7,11 +8,11 @@
     <div class="showBalls">
     </div>
   </div>
-
+</div>
 <div class="row">
   <div class="col-lg-3">
     <div class="bs-component">
-      <div class="panel panel-default">
+      <div class="transparent-panel panel-default">
         <h4 class="topPanel panel-heading"><span>Select Single Notes</span></h4>
         <div class="panel-body">
           <button id="playKey" class ="btn btn-success">Play</button>
@@ -33,9 +34,9 @@
         </div>
       </div>
 
-      <div class="panel panel-default">
+      <div class="transparent-panel panel-default transparent-body">
         <h4 class="topPanel panel-heading"><span>Input Root Note to play Triads</span></h4>
-        <div class="panel-body">
+        <div class="panel-body transparent-body">
           <div>
             <h4 class="sameLine">Key</h4>
             <input id="inputKey" type="text" name="Please enter key" placeholder=" C, C#, A..." value="C">
@@ -77,8 +78,8 @@
             </div>
           <!-- <input id="inputKeyButton" type="Play" name="submit" value="submit"> -->
           <h4>Scale: <span id="scaleOutput"></span></h4>
-          <button id="playTriad" class ="btn btn-success" value="submit">Play Triad</button>
-          <button id="playScale" class ="btn btn-success" value="submit">Play Scale</button>
+          <button id="playTriad" class ="btn btn-purple" value="submit">Play Triad</button>
+          <button id="playScale" class ="btn btn-purple" value="submit">Play Scale</button>
 
 
         </div>
@@ -88,15 +89,41 @@
 
   <div class="col-lg-3">
     <div class="bs-component">
-      <div class="panel panel-warning">
-        <div class="panel-heading">
-          <h3 class="panel-title">Sine Tones</h3>
-        </div>
+
+      <div class="transparent-panel panel-default">
+        <h4 class="topPanel panel-heading"><span>Play Inversions</span></h4>
         <div class="panel-body">
+          <span>
+            <h4 class="sameLine">Root Note: </h4>
+            <span class="rootNote"></span>
+          </span>
+          <div>
+            <h4>Octave</h4>
+            <select id="selectedOctave2">
+              <option value=2>2</option>
+              <option value=3>3</option>
+              <option selected="selected" value=4>4</option>
+              <option value=5>5</option>
+              <option value=6>6</option>
+              <option value=7>7</option>
+              <option value=8>8</option>
+            </select>
+          </div>
+          <div>
+            <h4>Chord Inversions</h4>
+            <select id="inversionType">
+              <option>Root-Position</option>
+              <option selected="selected">Second-Inversion</option>
+              <option>Third-Inversion</option>
+            </select>
+          </div>
+          <p></p>
+          <button id="playCompTriad" class ="btn btn-purple" value="submit">Play Repeating Triad</button>
         </div>
       </div>
 
-      <div class="panel panel-warning">
+
+      <div class="transparent-panel panel-warning">
         <div class="panel-heading">
           <h3 class="panel-title">Make some beats</h3>
         </div>
@@ -108,7 +135,7 @@
 
   <div class="col-lg-3">
     <div class="bs-component">
-      <div class="panel panel-warning">
+      <div class="transparent-panel panel-warning">
         <div class="panel-heading">
           <h3 class="panel-title">Sine Tones</h3>
         </div>
@@ -116,9 +143,9 @@
         </div>
       </div>
 
-      <div class="panel panel-warning">
+      <div class="transparent-panel panel-warning">
         <div class="panel-heading">
-          <h3 class="panel-title">Make some beats</h3>
+          <h3 class="panel-title">Sawtooth Tones</h3>
         </div>
         <div class="panel-body">
         </div>
@@ -129,7 +156,7 @@
 
   <div class="col-lg-3">
     <div class="bs-component">
-      <div class="panel panel-warning">
+      <div class="transparent-panel panel-warning">
         <div class="panel-heading">
           <h3 class="panel-title">Sine Tones</h3>
         </div>
@@ -137,9 +164,9 @@
         </div>
       </div>
 
-      <div class="panel panel-warning">
+      <div class="transparent-panel panel-warning">
         <div class="panel-heading">
-          <h3 class="panel-title">Make some beats</h3>
+          <h3 class="panel-title">Triangle Tones</h3>
         </div>
         <div class="panel-body">
         </div>

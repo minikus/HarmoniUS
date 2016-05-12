@@ -145,8 +145,18 @@ $(document).ready(function() {
     startBallAnimation(numberOfBalls);
   });
 
-  //animates when scales and triads are played
+  //animates when scales are played
   $('#playScale').on('mousedown', function(){
+    // debugger;
+    var inputKey = ($('#inputKey').val()).toLowerCase();
+    var octave = $('#selectedOctave').val()
+    frequency = (teoria.note(inputKey + octave)).fq();
+    var numberOfBalls = Math.floor(frequency)/10
+    startBallAnimation(numberOfBalls);
+  });
+
+  //animates when triads are played
+  $('#playTriad').on('mousedown', function(){
     // debugger;
     var inputKey = ($('#inputKey').val()).toLowerCase();
     var octave = $('#selectedOctave').val()

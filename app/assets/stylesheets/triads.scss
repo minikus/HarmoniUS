@@ -8,7 +8,7 @@
     border-color: #550CD8;
 }
 
-#selectedKey, #selectedOctave, #scaleType, #inversionType, #rateOfOutput{
+#selectedKey, #selectedOctave, #selectedOctave2, #scaleType, #inversionType, #rateOfOutput{
   background-color: #fff;
   border-color: #ccc;
   display: inline-block;
@@ -84,7 +84,11 @@ h5.keyInputs{
 // }
 
 .btn.btn-purple:hover {
-  background-color: #2A596D;
+  background-color: rebeccapurple;
+  color: white;
+}
+
+.btn.btn-purple:active {
   color: white;
 }
 
