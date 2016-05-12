@@ -21,15 +21,16 @@
           </a>
           <!-- <%= link_to 'HarmoniUS', root_path %> -->
         </div>
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
-          <ul class="nav navbar-nav navbar-center">
+        <div class="collapse navbar-collapse " id="bs-example-navbar-collapse-2">
+          <ul class="nav navbar-nav navbar-right">
+            <li><%= link_to 'Music Maker', music_maker_path %></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
             <li><%= link_to 'Keyboard', triads_path %></li>
           </ul>
-          <ul class="nav navbar-nav navbar-center">
-            <li><%= link_to 'Music Maker', music_maker_path %></li>
-          </ul>
-          <ul class="nav navbar-nav navbar-center">
-            <li><%= link_to 'Music Maker', music_maker_path %></li>
+          <span class="nav navbar-nav navbar-right navGap"></span>
+          <ul class="nav navbar-nav navbar-right ">
+            <li><%= link_to 'Learn Scales and Triads', triads_path %></li>
           </ul>
         </div>
       </div>
