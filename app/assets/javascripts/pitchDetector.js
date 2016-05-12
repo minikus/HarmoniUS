@@ -1,9 +1,13 @@
 $(document).ready(function(){
 
 window.AudioContext = window.AudioContext || window.webkitAudioContext;
+// var user1 = true;
+// var user2 = false;
+var rateOfOutput = 500;
 var displayNoteTimeout;
 var note;
-var playedNotes = [];
+var user1playedNotes = [];
+var user2playedNotes = [];
 var detune;
 var pitch = null; //this shows the frequency of notes
 var confidentToGuessNote = null;
@@ -108,9 +112,18 @@ $('#playSample').on('click', function(){
 	// this.innerText = "Stop Sample";
 });
 $('#playLiveInput').on('click', function(){
+	user1 = true;
+	user2 = false;
 	toggleLiveInput();
 	// this.innerText = "Stop Live Input";
 });
+$('#playLiveInput2').on('click', function(){
+	user1 = false;
+	user2 = true;
+ 	toggleLiveInput();
+});
+
+
 
 function toggleOscillator() {
     if (isPlaying) {
@@ -358,23 +371,21 @@ var displayAveragePitch = function (){
 					detuneElem.className = "sharp";
 				}
 				detuneAmount.innerHTML = Math.abs( detune );
-
 			}
-			playedNotes.push(noteStrings[note%12]);
-			console.log( playedNotes );
+
+			user1playedNotes.push(noteStrings[note%12]);
 
 			$('#recordedNotes').empty();
 
-			for (var i = 0; i*3 < playedNotes.length; i++) {
-				var notes = playedNotes.slice(i * 3, i * 3 + 3);
+			for (var i = 0; i*3 < user1playedNotes.length; i++) {
+				var notes = user1playedNotes.slice(i * 3, i * 3 + 3);
 				var $group = $('<div/>').addClass('appendedTriads').addClass('appendedTriads' + i).text(notes.join(', '));
 				$('#recordedNotes').prepend($group);
 			}
-
 		}
 	}
-	displayTimeout = setTimeout(displayAveragePitch, 500);
-
+	rateOfOutput = parseInt($('#rateOfOutput').val());
+	displayTimeout = setTimeout(displayAveragePitch, rateOfOutput);
 }
 
 var stopNoteDisplay = function(){
@@ -383,23 +394,6 @@ var stopNoteDisplay = function(){
 		displayTimeout = 0;
 	}
 }
-
-// console.log("frequency: ", frequency);
-// var chordNotesCount = 0;
-// var chordList = [];
-// var currentChord = [];
-// ​
-// currentChord[ chordNotesCount++ ] = note;
-// ​
-// if(chordNotesCount > 2) {
-//   chordList.push( currentChord );
-//   chordNotesCount = 0;
-// }
-
-// var group2Notes = function(){
-// 	if
-// }
-
 
 var _gaq = _gaq || [];
 _gaq.push(['_setAccount', 'UA-35593052-1']);

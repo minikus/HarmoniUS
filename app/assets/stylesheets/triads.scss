@@ -2,7 +2,7 @@
   margin-bottom: 40px;
 }
 
-#selectedKey, #selectedOctave, #scaleType, #inversionType{
+#selectedKey, #selectedOctave, #scaleType, #inversionType, #rateOfOutput{
   background-color: #fff;
   border-color: #ccc;
   display: inline-block;
@@ -25,7 +25,7 @@
   width: 50px;
 }
 
-#scaleType, #inversionType{
+#scaleType, #inversionType, #rateOfOutput{
   display: block;
   margin-top: 10px;
   width: 150px;
