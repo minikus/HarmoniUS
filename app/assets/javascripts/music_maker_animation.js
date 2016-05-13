@@ -165,6 +165,36 @@ $(document).ready(function() {
     startBallAnimation(numberOfBalls);
   });
 
+  $('#playCompTriad1').on('mousedown', function(){
+    // debugger;
+    var inputKey = ($('#inputKey').val()).toLowerCase();
+    var octave = $('#selectedOctave').val()
+    frequency = (teoria.note(inputKey + octave)).fq();
+    var numberOfBalls = Math.floor(frequency)/100
+    startBallAnimation(numberOfBalls);
+  });
+
+  $('#playCompTriad2').on('mousedown', function(){
+    // debugger;
+    var inputKey = ($('#inputKey').val()).toLowerCase();
+    var octave = $('#selectedOctave').val()
+    frequency = (teoria.note(inputKey + octave)).fq();
+    var numberOfBalls = Math.floor(frequency)/100
+    startBallAnimation(numberOfBalls);
+  });
+
+  $('#playCompTriad3').on('mousedown', function(){
+    // debugger;
+    var inputKey = ($('#inputKey').val()).toLowerCase();
+    var octave = $('#selectedOctave').val()
+    frequency = (teoria.note(inputKey + octave)).fq();
+    var numberOfBalls = Math.floor(frequency)/100
+    startBallAnimation(numberOfBalls);
+  });
+
+
+
+
   };
 
 });
