@@ -165,7 +165,7 @@ $(document).ready(function() {
     startBallAnimation(numberOfBalls);
   });
 
-  $('#playCompTriad1').on('mousedown', function(){
+  $('#playCompTriad').on('mousedown', function(){
     // debugger;
     var inputKey = ($('#inputKey').val()).toLowerCase();
     var octave = $('#selectedOctave').val()
