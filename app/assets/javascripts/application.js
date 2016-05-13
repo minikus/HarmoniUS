@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require underscore
+//= require teoria
 //= require paper
 //= require d3
 //= require triads
