@@ -141,7 +141,7 @@ $(document).ready(function() {
     var inputKey = ($('#inputKey').val()).toLowerCase();
     var octave = $('#selectedOctave').val()
     var frequency = (teoria.note(inputKey + octave)).fq();
-    numberOfBalls = Math.floor(frequency)/10
+    numberOfBalls = Math.floor(frequency)/100
     startBallAnimation(numberOfBalls);
   });
 
@@ -161,7 +161,7 @@ $(document).ready(function() {
     var inputKey = ($('#inputKey').val()).toLowerCase();
     var octave = $('#selectedOctave').val()
     frequency = (teoria.note(inputKey + octave)).fq();
-    var numberOfBalls = Math.floor(frequency)/10
+    var numberOfBalls = Math.floor(frequency)/100
     startBallAnimation(numberOfBalls);
   });
 

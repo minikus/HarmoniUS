@@ -8,7 +8,7 @@
     border-color: #550CD8;
 }
 
-#selectedKey, #selectedOctave, #selectedOctave2, #scaleType, #inversionType, #rateOfOutput{
+#selectedKey, #selectedOctave, #selectedOctave2, #scaleType, #inversionType, #inversionType2, #inversionType3, #rateOfOutput{
   background-color: #fff;
   border-color: #ccc;
   display: inline-block;
@@ -31,7 +31,7 @@
   width: 50px;
 }
 
-#scaleType, #inversionType, #rateOfOutput{
+#scaleType, #inversionType, #rateOfOutput, #inversionType2, #inversionType3{
   display: block;
   margin-top: 10px;
   width: 150px;
