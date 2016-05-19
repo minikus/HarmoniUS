@@ -112,7 +112,7 @@ Ball.prototype = {
 
 //--------------------- main ---------------------
 var balls = [];
-var numBalls = 16; 
+var numBalls = 16;
 for (var i = 0; i < numBalls; i++) {
 	var position = Point.random() * view.size;
 	var vector = new Point({
@@ -212,7 +212,7 @@ behaviors.sections = function() {
 
 	$(document).scroll(update);
 	$(window).resize(update);
-	setTimeout(update, 0);
+	setTimeout(update, 200);
 
 	$('article section').each(function() {
 		var section = $(this);
