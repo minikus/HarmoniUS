@@ -212,7 +212,7 @@ behaviors.sections = function() {
 
 	$(document).scroll(update);
 	$(window).resize(update);
-	setTimeout(update, 200);
+	setTimeout(update, 0);
 
 	$('article section').each(function() {
 		var section = $(this);
