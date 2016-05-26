@@ -46,6 +46,8 @@ group :development do
   gem 'web-console', '~> 2.0'
   gem 'annotate'
 
+  gem 'quiet_assets'
+
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
@@ -53,3 +55,6 @@ end
 group :production do
   gem 'rails_12factor'
 end
+
+# Makes `rails s` faster
+gem 'puma'
