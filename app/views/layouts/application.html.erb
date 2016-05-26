@@ -2,8 +2,8 @@
 <html>
 <head>
   <title>HarmoniUS</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
   <script src="//d3js.org/d3.v3.min.js"></script>
 </head>
@@ -41,6 +41,7 @@
 
     </div>
   </div>
-  <script type="text/paperscript" src="/assets/paper-js-animations.js" canvas="canvas-1"></script>
+  <%= javascript_include_tag 'paper-js-animations', type: 'text/paperscript', canvas: 'canvas-1' %>
+  <%# <script type="text/paperscript" src="/assets/paper-js-animations.js" canvas="canvas-1"></script> %>
 </body>
 </html>
