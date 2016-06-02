@@ -1,4 +1,3 @@
-
 function Ball(r, p, v) {
 	this.radius = r;
 	this.point = p;
